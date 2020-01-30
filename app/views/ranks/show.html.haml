@@ -1,0 +1,90 @@
+.header
+  .header__logo
+    = link_to "/", class: "header__logo__text" do
+      %h1 YourRank
+  .header__search
+    .header__search__form
+    .header__search__btn
+      %p 検索
+
+  .header__right
+    .header__right__post 
+      %p 投稿
+    .header__right__mypage
+      %p  マイページ
+    .header__right__logout
+      %p  ログアウト
+
+.show__main
+  .show__main__flex
+    .show__main__flex__left
+      .show__main__flex__left__title
+        %p Editer_Profile
+      .show__main__flex__left__1__box
+        .show__main__flex__left__1__box__icon
+          = link_to "#" do
+            %img{class: "show__main__flex__left__1__box__icon__img", src: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1MoYZU-GvyLMba7zlyOCJSRUsIhpCdJWcivyHjEjK5QpZwJXE"}
+        .show__main__flex__left__1__box__icon__name 高橋
+        .show__main__flex__left__1__box__icon__info 年間100本の映画を見る映画マニア</br>好きなジャンルはSFです！</br>参考になれば嬉しいです！
+        .show__main__flex__left__1__box__icon__message
+          = icon('far', 'paper-plane')
+        %p.show__main__flex__left__1__box__icon__text Contact!
+    .show__main__flex__right
+      .show__main__flex__right__title
+        %p.show__main__flex__right__title__h 『2019年公開映画』TOP3
+        = link_to "#", class: "show__main__flex__right__title__like" do
+          = icon('fas', 'heart')
+      .show__main__flex__right__rank
+        .show__main__flex__right__rank__int
+          %img{class: "show__main__flex__right__rank__int__img", src: "/assets/1.png"}
+        .show__main__flex__right__rank__img
+          %img{class: "show__main__flex__right__rank__img__top", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
+        .show__main__flex__right__rank__wrapper
+          .show__main__flex__right__rank__wrapper__title
+            %p スター・ウォーズ／スカイウォーカーの夜明け
+          .show__main__flex__right__rank__wrapper__content
+            = icon('fas', 'chevron-down')
+      .show__main__flex__right__rank
+        .show__main__flex__right__rank__int
+          %img{class: "show__main__flex__right__rank__int__img", src: "/assets/2.png"}
+        .show__main__flex__right__rank__img
+          %img{class: "show__main__flex__right__rank__img__top", src: "https://images-na.ssl-images-amazon.com/images/I/51dkkRsoH8L._SY445_.jpg"}
+        .show__main__flex__right__rank__wrapper
+          .show__main__flex__right__rank__wrapper__title
+            %p　ゴジラ キング・オブ・モンスターズ
+          .show__main__flex__right__rank__wrapper__content
+            = icon('fas', 'chevron-down')
+      .show__main__flex__right__rank
+        .show__main__flex__right__rank__int
+          %img{class: "show__main__flex__right__rank__int__img", src: "/assets/3.png"}
+        .show__main__flex__right__rank__img
+          %img{class: "show__main__flex__right__rank__img__top", src: "https://iwiz-movies.c.yimg.jp/c/movies/pict/p/p/ad/a3/168788_03.jpg"}
+        .show__main__flex__right__rank__wrapper
+          .show__main__flex__right__rank__wrapper__title
+            %p　トイ・ストーリー4
+          .show__main__flex__right__rank__wrapper__content
+            = icon('fas', 'chevron-down')
+  .comment
+    .comment__title
+      %p comment 
+    .comment__content
+      .comment__content__icon
+        = link_to "#" do
+          %img{class: "comment__content__icon__img", src: "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2019%2F09%2Fdarth-vader-helmet-star-wars-the-empire-strikes-back-auction-03.jpg?w=1600&cbr=1&q=90&fit=max"}
+      .comment__content__wrapper
+        .comment__content__wrapper__name
+          %p ダースベイダー
+        .comment__content__wrapper__text
+          %p 私はエピソード4が好きです！
+    .comment__content
+      .comment__content__icon
+        = link_to "#" do
+          %img{class: "comment__content__icon__img", src: "https://pbs.twimg.com/profile_images/660078948206817280/rjpXbtqn.jpg"}
+      .comment__content__wrapper
+        .comment__content__wrapper__name
+          %p ウッディ
+        .comment__content__wrapper__text
+          %p おい！バズ！
+.footer
+  ©️ 2019 Shunsuke_Takahashi
+
