@@ -5,15 +5,29 @@
   .header__search
     .header__search__form
     .header__search__btn
-      %p 検索
+      %p Search
 
   .header__right
     .header__right__post 
-      %p 投稿
+      -if user_signed_in?
+        = link_to new_rank_path, class: "header__right__post__link" do
+          %p Post
+      -else 
+        = link_to "#", class: "header__right__mypage__link" do
+          %p about YourRank
     .header__right__mypage
-      %p  マイページ
+      -if user_signed_in?
+        = current_user.nickname
+      -else 
+        = link_to new_user_registration_path, class: "header__right__mypage__link" do
+          %p Sign-Up
     .header__right__logout
-      %p  ログアウト
+      -if user_signed_in?
+        = link_to destroy_user_session_path, method: :delete, class: "header__right__logout__link" do
+          %p Log-Out
+      -else 
+        = link_to new_user_session_path, class: "header__right__logout__link" do
+          %p Sign-In
 
 .main
   .main__1
