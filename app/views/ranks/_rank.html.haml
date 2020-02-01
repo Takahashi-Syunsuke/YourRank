@@ -2,7 +2,8 @@
   .main__wrapper__icon
     = image_tag rank.user.image, class: "main__wrapper__icon__img" if rank.user.image.present?
   .main__wrapper__name
-    = rank.user.nickname
+    = link_to user_path(rank.user.id), class: "main__wrapper__name" do
+      = rank.user.nickname
   .main__wrapper__info 
     = rank.user.profile
   .main__wrapper__title
