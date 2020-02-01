@@ -1,0 +1,9 @@
+.form {
+  width: 500px;
+  margin: 20px;
+  display: flex;
+  flex-flow: column;
+  &__name {
+    margin: 20px;
+  }
+}

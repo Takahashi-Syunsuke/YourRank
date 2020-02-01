@@ -1,0 +1,77 @@
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: orange;
+  position: fixed;
+  z-index: 1;
+  line-height: 60px;
+  display: flex;
+  &__logo {
+    height: 50px;
+    width: calc(100% / 4);
+    margin: 5px 5px 5px 70px;
+    font-size: 28px;
+    color: white;
+    line-height: 50px;
+  }
+  &__search {
+    height: 100%;
+    width: calc(100% / 2);
+    display: flex;
+    &__btn {
+      height: 50px;
+      width: 70px;
+      margin: 5px 5px 5px 0px;
+      text-align: center;
+      line-height: 50px;
+      border: 1px solid white;
+      border-radius: 5px;
+    }
+    &__form {
+      height: 50px;
+      width: calc(100% - 70px);
+      background-color: white;
+      border-radius: 5px;
+      margin: 5px;
+    }
+  }
+  &__right {
+    height: 50px;
+    width: calc(100% / 4);
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 70px 5px 5px;
+    font-size: 14px;
+    align-items: center;
+    &__post {
+      height: 100%;
+      width: 80px;
+      margin: 5px;
+      border: 1px solid white;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+    }
+    &__mypage {
+      height: 100%;
+      width: 80px;
+      margin: 5px;
+      border: 1px solid white;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+    }
+    &__logout {
+      height: 100%;
+      width: 80px;
+      margin: 5px;
+      border: 1px solid white;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+  p {
+    color: white;
+  }
+}

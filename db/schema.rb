@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_30_114719) do
+ActiveRecord::Schema.define(version: 2020_01_31_062612) do
+
+  create_table "rank_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "rank_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -24,7 +31,12 @@ ActiveRecord::Schema.define(version: 2020_01_30_114719) do
     t.string "content_2"
     t.string "content_3"
     t.integer "user_id", null: false
-    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_01_30_114719) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "profile"
+    t.text "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

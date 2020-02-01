@@ -1,0 +1,56 @@
+.smain__flex
+
+  .smain__flex__left
+    .smain__flex__left__title
+      -if user_signed_in?
+        = link_to "#", class: "smain__flex__left__title" do
+          %p Edit_User_Profile
+      -else
+        %p Editer_Profile
+    .smain__flex__left__wrapper
+      .smain__flex__left__wrapper__icon
+        = link_to "#" do
+          = image_tag @rank.user.image, class: "smain__flex__left__wrapper__icon__img" if @rank.user.image.present?
+      .smain__flex__left__wrapper__name 
+        = @rank.user.nickname
+      .smain__flex__left__wrapper__info
+        = @rank.user.profile
+      .smain__flex__left__wrapper__message
+        = icon('fas', 'user-friends')
+      %p.smain__flex__left__wrapper__text Follow me!
+
+  .smain__flex__right
+    .smain__flex__right__title
+      = @rank.title
+      = link_to "#", class: "smain__flex__right__title__like" do
+        = icon('fas', 'heart')
+    .smain__flex__right__rank
+      .smain__flex__right__rank__int
+        %img{class: "smain__flex__right__rank__int__img", src: "/assets/1.png"}
+      .smain__flex__right__rank__img
+        %img{class: "smain__flex__right__rank__img__top", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
+      .smain__flex__right__rank__wrapper
+        .smain__flex__right__rank__wrapper__title
+          = @rank.rank_1
+        .smain__flex__right__rank__wrapper__content
+          = icon('fas', 'chevron-down')
+    .smain__flex__right__rank
+      .smain__flex__right__rank__int
+        %img{class: "smain__flex__right__rank__int__img", src: "/assets/2.png"}
+      .smain__flex__right__rank__img
+        %img{class: "smain__flex__right__rank__img__top", src: "https://images-na.ssl-images-amazon.com/images/I/51dkkRsoH8L._SY445_.jpg"}
+      .smain__flex__right__rank__wrapper
+        .smain__flex__right__rank__wrapper__title
+          = @rank.rank_2
+        .smain__flex__right__rank__wrapper__content
+          = icon('fas', 'chevron-down')
+    .smain__flex__right__rank
+      .smain__flex__right__rank__int
+        %img{class: "smain__flex__right__rank__int__img", src: "/assets/3.png"}
+      .smain__flex__right__rank__img
+        %img{class: "smain__flex__right__rank__img__top", src: "https://iwiz-movies.c.yimg.jp/c/movies/pict/p/p/ad/a3/168788_03.jpg"}
+      .smain__flex__right__rank__wrapper
+        .smain__flex__right__rank__wrapper__title
+          = @rank.rank_3
+        .smain__flex__right__rank__wrapper__content
+          = icon('fas', 'chevron-down')
