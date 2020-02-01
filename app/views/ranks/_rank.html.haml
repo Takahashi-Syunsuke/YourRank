@@ -1,0 +1,19 @@
+.main__wrapper
+  .main__wrapper__icon
+    = image_tag rank.user.image, class: "main__wrapper__icon__img" if rank.user.image.present?
+  .main__wrapper__name
+    = rank.user.nickname
+  .main__wrapper__info 
+    = rank.user.profile
+  .main__wrapper__title
+    = link_to rank_path(rank.id) do
+      %p.main__wrapper__title__text
+        = rank.title
+    = link_to "#", class: "main__wrapper__title__flex" do
+      = icon('fas', 'heart')
+      %p.main__wrapper__title__flex__text
+        _50 
+    = link_to "#", class: "main__wrapper__title__flex" do
+      = icon('fas', 'tag')
+      %p.main__wrapper__title__flex__text
+        _映画

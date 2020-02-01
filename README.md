@@ -5,15 +5,10 @@
 |rank_1|string|null: false|
 |rank_2|string|null: false|
 |rank_3|string|null: false|
-|rank_4|string|null: false|
-|rank_5|string|null: false|
 |image_1|text||
 |image_2|text||
 |image_3|text||
-|image_4|text||
-|image_5|text||
 |user_id|integer|null: false, foreign_key: true|
-|tag_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :comments
@@ -53,12 +48,11 @@
 ## tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|integer||
-|rank-id|integer|null: false, foreign_key: true|
+|name|string|null: false|
 ### Association
 - has_many :ranks_tags
 
-## ranks_tagsテーブル
+## rank_tagsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |rank_id|integer|null: false, foreign_key: true|

@@ -1,1 +1,17 @@
-hello
+
+.main
+  .main__new
+    = form_with model: @rank, class: :form, local: true do |form| 
+      %h1.form__message Post YourRank!
+      = form.text_field :title, placeholder: "ランキングタイトル", class: "form__title"
+      = form.text_field :rank_1, placeholder: "１位", class: "form__rank"
+      = form.text_area :content_1, placeholder: "おすすめポイント", class: "form__content"
+      = form.file_field :image_1, class: "form__image"
+      = form.text_field :rank_2, placeholder: "2位", class: "form__rank"
+      = form.text_area :content_2, placeholder: "おすすめポイント", class: "form__content"
+      = form.file_field :image_2, class: "form__image"
+      = form.text_field :rank_3, placeholder: "3位", class: "form__rank"
+      = form.text_area :content_3, placeholder: "おすすめポイント", class: "form__content"
+      = form.file_field :image_3, class: "form__image"
+      = form.submit "作成", class: "form__btn"  
+

@@ -1,0 +1,5 @@
+%h1 タグを作ってみよう
+
+= form_with model: @tag, class: :form, local: true do |form| 
+  = form.text_field :name, placeholder: "タグ", class: "form__name"
+  = form.submit "作成", class: "form__btn"
