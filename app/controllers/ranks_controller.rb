@@ -1,10 +1,12 @@
 class RanksController < ApplicationController
   def index
-    @ranks = Rank.all
+    @ranks = Rank.all.order(id: "DESC")
   end
 
   def show
     @rank = Rank.find(params[:id])
+    @comment = Comment.new
+    @comments = @rank.comments.includes(:user).order(id: "DESC")
   end
 
   def new
