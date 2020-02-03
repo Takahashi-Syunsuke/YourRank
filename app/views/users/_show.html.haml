@@ -1,0 +1,18 @@
+-@ranks.each do |rank|
+  .smain__flex__show__wrapper
+    .smain__flex__show__wrapper__img
+      %img{class: "smain__flex__show__wrapper__img__thumbnail", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
+    .smain__flex__show__wrapper__right
+      .smain__flex__show__wrapper__right__wrapper
+        .smain__flex__show__wrapper__right__wrapper__title
+          = link_to rank_path(rank.id) do
+            = rank.title
+        .smain__flex__show__wrapper__right__wrapper__like   
+          = link_to "#" do
+            = icon('fas', 'heart')
+            _50
+      .smain__flex__show__wrapper__right__bottom 
+        = link_to "#" do
+          = icon('fas', 'tag')
+          _映画
+

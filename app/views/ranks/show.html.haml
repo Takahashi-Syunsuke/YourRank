@@ -1,25 +1,31 @@
 .smain
+  .smain__title
+    =@rank.title
+
   = render 'show'
 
   .comment
     .comment__title
       %p comment 
-    .comment__content
-      .comment__content__icon
-        = link_to "#" do
-          %img{class: "comment__content__icon__img", src: "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2019%2F09%2Fdarth-vader-helmet-star-wars-the-empire-strikes-back-auction-03.jpg?w=1600&cbr=1&q=90&fit=max"}
-      .comment__content__wrapper
-        .comment__content__wrapper__name
-          %p ダースベイダー
-        .comment__content__wrapper__text
-          %p 私はエピソード4が好きです！
-    .comment__content
-      .comment__content__icon
-        = link_to "#" do
-          %img{class: "comment__content__icon__img", src: "https://pbs.twimg.com/profile_images/660078948206817280/rjpXbtqn.jpg"}
-      .comment__content__wrapper
-        .comment__content__wrapper__name
-          %p ウッディ
-        .comment__content__wrapper__text
-          %p おい！バズ！
+    .comment__flex
+      .comment__flex__message  
+        = image_tag current_user.image, class: "comment__flex__message__icon" if current_user.image.present?
+      -if current_user
+        = form_with model: [@rank, @comment], class: :comment__flex__form, local: true do |form|
+          = form.text_field :content, placeholder: "comment", class: "comment__flex__form__content", rows: "2"
+          = form.submit "作成", class: "comment__flex__form__btn"  
+      -else
+        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
 
+    -@comments.each do |comment|
+
+      .comment__content
+        .comment__content__icon
+          .comment__content__icon__background
+            = link_to user_path(comment.user) do
+              = image_tag comment.user.image, class: "comment__content__icon__background__img" if comment.user.image.present?
+        .comment__content__wrapper
+          .comment__content__wrapper__name
+            = comment.user.nickname
+          .comment__content__wrapper__text
+            = comment.content

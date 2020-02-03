@@ -1,0 +1,46 @@
+.smain__flex__show {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  &__wrapper {
+    height: 150px;
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+    &__img {
+      height: 140px;
+      min-width: 140px;
+      margin: 5px;
+      text-align: center;
+      &__thumbnail {
+        height: 140px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+    &__right {
+      width: calc(100% - 150px);
+      display: flex;
+      flex-flow: column;
+      &__wrapper {
+        display: flex;
+        line-height: 100px;
+        &__title {
+          height: 100px;
+          width: calc(100% - 100px);
+          margin: 5px;
+          font-size: 20px;
+        }
+        &__like {
+          height: 100px;
+          width: 100px;
+          margin: 5px;
+        }
+      }
+      &__bottom {
+        line-height: 30px;
+        margin: 5px;
+      }
+    }
+  }
+}

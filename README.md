@@ -8,6 +8,9 @@
 |image_1|text||
 |image_2|text||
 |image_3|text||
+|content_1|string|
+|content_2|string|
+|content_3|string|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -29,7 +32,7 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|content|string||
+|content|string|null: false|
 |rank_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
