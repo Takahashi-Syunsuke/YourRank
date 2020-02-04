@@ -5,17 +5,22 @@
     %title YourRank
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    -# = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    -# = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+
   %body
     .header
       .header__logo    
         = link_to "/", class: "header__logo__text" do
           %h1 YourRank
       .header__search
-        .header__search__form
-        .header__search__btn
-          %p Search
+      .header__search__form    
+        =form_with url: search_ranks_path, local: true, method: :get do |f|
+          = f.text_field :keyword, id: "user-search-field", class: "header-search-form__input", placeholder: "あなたの気になるランキングを検索"
+          = f.submit 'SEARCH'
+          .user-search-result
 
       .header__right
         .header__right__post 

@@ -17,6 +17,7 @@
 - has_many :comments
 - has_many :likes
 - has_many :ranks_tags
+- has_many  :tags, through: :rank_tags
 
 ## usersテーブル
 |Column|Type|Options|
@@ -53,7 +54,8 @@
 |------|----|-------|
 |name|string|null: false|
 ### Association
-- has_many :ranks_tags
+- has_many :rank_tags
+- has_many :ranks, through: :rank_tags
 
 ## rank_tagsテーブル
 |Column|Type|Options|
