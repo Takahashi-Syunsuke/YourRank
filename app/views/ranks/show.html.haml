@@ -20,6 +20,14 @@
         _
         - @rank.tags.each do |tag|
           = tag.name
+    .smain__title__like
+      - if Like.find_by(user_id: current_user.id, rank_id: @rank.id) 
+        = link_to rank_like_path(@rank), method: :delete, class: "to-unlike" do
+          = icon('fas', 'heart')
+      - else 
+        = link_to rank_likes_path(@rank), method: :post, class: "to-like" do
+          = icon('fas', 'heart')
+      = @likes_count
 
   = render 'show'
 

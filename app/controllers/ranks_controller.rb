@@ -7,6 +7,8 @@ class RanksController < ApplicationController
     @rank = Rank.find(params[:id])
     @comment = Comment.new
     @comments = @rank.comments.includes(:user).order(id: "DESC")
+    @like = Like.new
+    @likes_count = Like.where(rank_id: @rank).count
   end
 
   def new
