@@ -8,10 +8,31 @@
     height: 60px;
     background-color: #FF6699;
     margin-bottom: 30px;
+    padding: 0 20px 0 20px;
     color: white;
     font-size: 20px;
     text-align: center;
     line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    &__text {
+
+    }
+    &__edit {
+      height: 50px;
+      width: 80px;
+      margin: 5px 0 5px 0;
+      border: solid 1px white;
+      line-height: 50px;
+    }
+    &__tag {
+      height: 50px;
+      min-width: 80px;
+      margin: 5px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+    }
   }
   &__flex {
     display: flex;

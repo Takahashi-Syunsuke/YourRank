@@ -1,6 +1,25 @@
 .smain
   .smain__title
-    =@rank.title
+
+    .smain__title__edit
+      = link_to edit_rank_path(@rank), class: "smain__title__edit__btn" do
+        Edit
+    .smain__title__delete
+      = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "smain__title__edit__btn" do
+        削除
+    .smain__title__text
+      =@rank.title
+
+    .smain__title__tag
+      = link_to new_tag_path, class: "header__logo__text" do
+        %p New_tag
+
+    .smain__title__tag
+      = link_to tag_path(@rank.tag_ids), class: "main__wrapper__title__flex" do
+        = icon('fas', 'tag')
+        _
+        - @rank.tags.each do |tag|
+          = tag.name
 
   = render 'show'
 

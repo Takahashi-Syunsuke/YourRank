@@ -14,17 +14,21 @@ ActiveRecord::Schema.define(version: 2020_02_02_140628) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
-    t.integer "rank_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "rank_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rank_id"], name: "index_comments_on_rank_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "rank_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "rank_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "rank_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rank_id"], name: "index_rank_tags_on_rank_id"
+    t.index ["tag_id"], name: "index_rank_tags_on_tag_id"
   end
 
   create_table "ranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,4 +68,8 @@ ActiveRecord::Schema.define(version: 2020_02_02_140628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "ranks"
+  add_foreign_key "comments", "users"
+  add_foreign_key "rank_tags", "ranks"
+  add_foreign_key "rank_tags", "tags"
 end

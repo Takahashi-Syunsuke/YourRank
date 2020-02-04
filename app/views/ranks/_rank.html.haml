@@ -17,4 +17,6 @@
     = link_to "#", class: "main__wrapper__title__flex" do
       = icon('fas', 'tag')
       %p.main__wrapper__title__flex__text
-        _映画
+        _
+        - rank.tags.each do |tag|
+          = tag.name
