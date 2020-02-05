@@ -6,50 +6,83 @@
   overflow: scroll;
   &__title {
     height: 60px;
-    background-color: #FF6699;
+    background-color: white;
     margin-bottom: 30px;
     padding: 0 20px 0 20px;
-    color: white;
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
     line-height: 60px;
     display: flex;
     justify-content: space-between;
-    &__text {
-
+    p {
+      color: black;
     }
-    &__edit {
-      height: 50px;
-      width: 80px;
-      margin: 5px 0 5px 0;
-      border: solid 1px white;
-      line-height: 50px;
-    }
-    &__tag {
-      height: 50px;
-      min-width: 80px;
-      margin: 5px;
-      border-radius: 5px;
-      text-align: center;
-      line-height: 50px;
-    }
-    &__like{
-      height: 50px;
-      min-width: 80px;
-      margin: 5px;
-      border-radius: 5px;
-      line-height: 50px;
-      &__heart {
+    &__left {
+      display: flex;
+      &__tag {
+        height: 50px;
+        min-width: 80px;
+        margin: 5px;
+        border-radius: 5px;
         text-align: center;
+        line-height: 50px;
+        font-size: 14px;
+        .icon-tag {
+          color: black;
+        }
       }
-      .to-unlike {
-        color: red;
+      &__tag--edit {
+        font-size: 14px;
+        text-align: center;
+        .icon-tag-edit {
+          color: black;
+          display: flex;
+          align-items: center;
+        }
       }
-      .to-like {
-        color: white;
+    }
+    &__center { 
+      display: flex;
+      &__like{
+        height: 50px;
+        min-width: 80px;
+        margin: 5px 5px 5px 15px;
+        border-radius: 5px;
+        line-height: 50px;
+        font-size: 14px;
+        &__heart {
+          text-align: center;
+        }
+        .to-unlike {
+          color: red;
+          font-size: 14px;
+        }
+        .to-like {
+          color: gray;
+          font-size: 14px;
+        }
+      }
+    }
+    &__right {
+      display: flex;
+      font-size: 16px;
+      &__edit {
+        height: 50px;
+        width: 80px;
+        margin: 5px 0 5px 0;
+        border: solid 1px ;
+        line-height: 50px;
+      }
+      &__delete {
+        height: 50px;
+        width: 80px;
+        margin: 5px 0 5px 5px;
+        border: solid 1px ;
+        line-height: 50px;
       }
     }
   }
+
   &__flex {
     display: flex;
     &__left {
@@ -58,7 +91,7 @@
       text-align: center;
       &__title {
         height: 100px;
-        background-color: gray;
+        background-color: turquoise;
         color: white;
         margin-bottom: 5px;
         line-height: 100px;
@@ -74,6 +107,17 @@
           height: 180px;
           line-height: 150px;
           position: relative;
+          border-radius: 50%;
+          &__background {
+            height: 100px;
+            width: 100px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 100px;
+            object-fit: cover;
+          }
           &__img {
             height: 100px;
             width: 100px;
@@ -90,6 +134,8 @@
         &__info {
           height: 70px;
           font-size: 12px;
+          word-break: keep-all;
+          margin:20px;
         }
         &__message {
           font-size: 3em;

@@ -12,6 +12,12 @@
       min-width: 140px;
       margin: 5px;
       text-align: center;
+    &__background {
+      height: 140px;
+      width: auto;
+      object-fit: cover;
+      background-color: white;
+    }
       &__thumbnail {
         height: 140px;
         width: auto;

@@ -2,14 +2,15 @@
   .smain__flex
     .smain__flex__left
       .smain__flex__left__title
-        -if user_signed_in?
+        - if user_signed_in? && current_user.id == @user.id
           = link_to "#", class: "smain__flex__left__title" do
-            %p Edit_User_Profile
-        -else
-          %p Editer_Profile
+            %p ユーザー編集
+        - else
+          %p 投稿者
       .smain__flex__left__wrapper
         .smain__flex__left__wrapper__icon
-          = link_to "#" do
+          .smain__flex__left__wrapper__icon__background
+          = link_to user_path(@user) do
             = image_tag @user.image, class: "smain__flex__left__wrapper__icon__img" if @user.image.present?
         .smain__flex__left__wrapper__name 
           = @user.nickname
@@ -20,4 +21,3 @@
         %p.smain__flex__left__wrapper__text Follow
     .smain__flex__show
       = render "show"
-

@@ -1,33 +1,40 @@
 .smain
   .smain__title
+    .smain__title__left
+      .smain__title__left__tag
+        = link_to tag_path(@rank.tag_ids), class: "icon-tag" do
+          = icon('fas', 'tag')
+          - @rank.tags.each do |tag|
+            &nbsp
+            = tag.name
+      .smain__title__left__tag--edit
+        = link_to new_tag_path, class: "icon-tag-edit" do
+          = icon('fas', 'edit')
+          %p
+            &nbsp
+            新規タグ
 
-    .smain__title__edit
-      = link_to edit_rank_path(@rank), class: "smain__title__edit__btn" do
-        Edit
-    .smain__title__delete
-      = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "smain__title__edit__btn" do
-        削除
-    .smain__title__text
-      =@rank.title
+    .smain__title__center
+      .smain__title__cener__text
+        =@rank.title
+      .smain__title__center__like
+        - if Like.find_by(user_id: current_user.id, rank_id: @rank.id) 
+          = link_to rank_like_path(@rank), method: :delete, class: "to-unlike" do
+            = icon('fas', 'heart')
+        - else 
+          = link_to rank_likes_path(@rank), method: :post, class: "to-like" do
+            = icon('fas', 'heart')
+        &nbsp
+        = @likes_count
 
-    .smain__title__tag
-      = link_to new_tag_path, class: "header__logo__text" do
-        %p New_tag
-
-    .smain__title__tag
-      = link_to tag_path(@rank.tag_ids), class: "main__wrapper__title__flex" do
-        = icon('fas', 'tag')
-        _
-        - @rank.tags.each do |tag|
-          = tag.name
-    .smain__title__like
-      - if Like.find_by(user_id: current_user.id, rank_id: @rank.id) 
-        = link_to rank_like_path(@rank), method: :delete, class: "to-unlike" do
-          = icon('fas', 'heart')
-      - else 
-        = link_to rank_likes_path(@rank), method: :post, class: "to-like" do
-          = icon('fas', 'heart')
-      = @likes_count
+    .smain__title__right
+      - if user_signed_in? && current_user.id == @rank.user_id
+        .smain__title__right__edit
+          = link_to edit_rank_path(@rank) do
+            %p 編集
+        .smain__title__right__delete
+          = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "smain__title__edit__btn" do
+            %p 削除
 
   = render 'show'
 

@@ -2,13 +2,14 @@
 
   .smain__flex__left
     .smain__flex__left__title
-      -if user_signed_in?
+      - if user_signed_in? && current_user.id == @rank.user_id
         = link_to "#", class: "smain__flex__left__title" do
-          %p Edit_User_Profile
+          %p ユーザー編集
       -else
-        %p Editer_Profile
+        %p 投稿者
     .smain__flex__left__wrapper
       .smain__flex__left__wrapper__icon
+        .smain__flex__left__wrapper__icon__background
         = link_to "#" do
           = image_tag @rank.user.image, class: "smain__flex__left__wrapper__icon__img" if @rank.user.image.present?
       .smain__flex__left__wrapper__name 

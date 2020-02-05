@@ -1,5 +1,6 @@
 .main__wrapper
   .main__wrapper__icon
+    .main__wrapper__icon__background
     = image_tag rank.user.image, class: "main__wrapper__icon__img" if rank.user.image.present?
   .main__wrapper__name
     = link_to user_path(rank.user.id), class: "main__wrapper__name" do
@@ -10,13 +11,15 @@
     = link_to rank_path(rank.id) do
       %p.main__wrapper__title__text
         = rank.title
-    = link_to "#", class: "main__wrapper__title__flex" do
+    .main__wrapper__title__like
       = icon('fas', 'heart')
-      %p.main__wrapper__title__flex__text
-        _50 
-    = link_to "#", class: "main__wrapper__title__flex" do
+      &nbsp
+      = Like.where(rank_id: rank).count
+
+    .main__wrapper__title__tag
       = icon('fas', 'tag')
-      %p.main__wrapper__title__flex__text
-        _
+      %p
+        &nbsp
         - rank.tags.each do |tag|
-          = tag.name
+          = link_to tag_path(rank.tag_ids), class: "icon-tag" do
+            = tag.name

@@ -20,6 +20,16 @@
       text-align: center;
       line-height: 150px;
       position: relative;
+      &__background {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        position: absolute;
+        top: 15px;
+        left: 100px;
+        object-fit: cover;
+        background-color: white;
+      }
       &__img {
         height: 100px;
         width: 100px;
@@ -32,10 +42,13 @@
     }
     &__name {
       height: 30px;
+      color: black;
     }
     &__info {
       height: 70px;
       font-size: 12px;
+      word-break: keep-all;
+      padding: 20px;
     }
     &__title {
       height: 170px;
@@ -47,11 +60,23 @@
         color: black;
         font-size: 20px;
       }
-      &__flex {
+      &__like {
+        .fas {
+          color: red;
+        }
+      }
+      &__tag {
         display: flex;
-        justify-content: center;
+        margin: auto;
+        line-height: 100%;
         align-items: center;
+        .fas {
+          font-size: 12px;
+        }
+      }
+      .icon-tag{
         color: black;
+        font-size: 12px;
       }
     }
   }
