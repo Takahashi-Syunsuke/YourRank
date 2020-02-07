@@ -1,245 +1,45 @@
-@mixin form-figure {
-  height: 375px;
-  background-color: lightslategrey;
-  display: flex;
-  flex-flow: column;
-  text-align: center;
-  margin-bottom: 20px; 
-  border-radius: 5px 5px 5px 5px;
-}
-
-@mixin input-image {
-  height: 30px;
-  width: 200px;
-  background-color: #00BFFF;
-  border: 2px solid #00BFFF;
-  color: white;
-  font-size: 11px;
-  margin: 3px;
-  border-radius: 5px 5px 5px 5px;
-  line-height: 26px;
-  cursor: pointer;
-}
 .main {
   &__new {
-    width: 600px;
-    margin-bottom: 10px;
+    width: 100%;
+    min-width: 1550px;
+    margin-right: 60px;
     .form {
-      width: 100%;
+      width: calc(100% / 2);
       display: flex;
       flex-flow: column;
-      font-size: 14px;
-      input {
-        border: none;
-        padding: 0px 10px;
-        color: dimgray;
-      }
-      textarea {
-        border: none;
-        padding: 10px;
-        color: dimgray;
-      }
-    &__message {
-      height: 30px;
-      background-color: lightslategrey;
-      color: white;
-      font-size: 20px;
-      margin-bottom: 20px; 
-      border-radius: 30px 30px 30px 30px;
       text-align: center;
-    }
-    &__title {
-      height: 40px;
-      background-color: lightslategrey;
-      display: flex;
-      flex-flow: column;
-      margin-bottom: 20px;
-      border-radius: 5px 5px 5px 5px;
-      input {
+      &__message {
+        font-size: 24px;
+      }
+      &__title {
+        height: 60px;
+        margin: 20px 20px;
+        border: none;
+      }
+      &__rank {
         height: 30px;
-        margin: 5px; 
-        background-color: white;
+        margin: 10px 20px;
+        border: none;
       }
-    }
-    &__first {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
-        }
-      }
-      input {
-        height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px;
-      }
-      textarea {
-        height: 90px;
-        margin: 5px 5px 0px 5px; 
-        background-color: white;
+      &__content {
+        height: 60px;
+        margin: 10px 20px;
+        border: none;
       }
       &__image {
+        margin: 20px;
+        margin: 10px 20px 30px 20px;
+      }
+      &__check {
         display: flex;
-        margin: auto;
-        input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
+        align-items: center;
+        label {
+          margin-left: 10px;
         }
       }
-    }
-    &__second {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
-        }
+      &__btn {
+        margin: 20px;
       }
-      input {
-        height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-      }
-      textarea {
-        height: 90px;
-        margin: 5px 5px 0px 5px; 
-        background-color: white;
-      }
-      &__image {
-        display: flex;
-        margin: auto;
-        input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
-        }
-      }
-    }
-    &__third {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
-        }
-      }
-      input {
-        height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-      }
-      textarea {
-        height: 90px;
-        margin: 5px 5px 0px 5px; 
-        background-color: white;
-      }
-      &__image {
-        display: flex;
-        margin: auto;
-        input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
-        }
-      }
-    }
-    &__check {
-      height: 200px;
-      background-color: lightslategray;
-      display: flex;
-      margin-bottom: 20px;
-      border-radius: 5px 5px 5px 5px;
-      &__inner {
-        height: 190px;
-        width: 590px;
-        margin: 5px;
-        padding: 5px;
-        background-color: white;
-        word-break: keep-all;
-        display: flex;
-        flex-wrap: wrap;
-        overflow: scroll;
-        input {
-          display: none;
-        }
-        input + label {
-          height: 30px;
-          background-color: turquoise;
-          border: 2px solid turquoise;
-          color: white;
-          font-size: 11px;
-          margin-right: 3px;
-          padding: 0px 3px;
-          border-radius: 5px 5px 5px 5px;
-          line-height: 24px;
-          cursor: pointer;
-        }
-        }
-        input:checked + label {
-          height: 30px;
-          background-color: white;
-          border: 2px solid turquoise;
-          color: dimgray;
-          margin-right: 3px;
-          padding: 0px 3px;
-          border-radius: 5px 5px 5px 5px;
-          line-height: 24px;
-          cursor: pointer;
-        }
-      }
-    }
-    .create__btn {
-      height: 30px;
-      width: 300px;
-      margin-left: 150px;
-      background-color: #00BFFF;
-      border: 2px solid #00BFFF;
-      border-radius: 30px 30px 30px 30px;
-      cursor: pointer;
-    }
-    input.create__btn {
-      color: white;
     }
   }
 }

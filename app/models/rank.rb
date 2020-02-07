@@ -11,10 +11,6 @@ class Rank < ApplicationRecord
   validates :rank_3, presence: true
   validates :user_id, presence: true
 
-  mount_uploader :image_1, ImageUploader
-  mount_uploader :image_2, ImageUploader
-  mount_uploader :image_3, ImageUploader
-
   def self.search(search)
     return Rank.all unless search
     Rank.where(['title LIKE ?', "%#{search}%"])
