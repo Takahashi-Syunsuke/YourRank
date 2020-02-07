@@ -1,19 +1,50 @@
 
 .main
+  .main__sidebar
   .main__new
-    = form_with model: @rank, class: :form, local: true do |form| 
-      %h1.form__message Post YourRank!
-      = form.text_field :title, placeholder: "ランキングタイトル", class: "form__title"
-      = form.text_field :rank_1, placeholder: "１位", class: "form__rank"
-      = form.text_area :content_1, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_1, class: "form__image"
-      = form.text_field :rank_2, placeholder: "2位", class: "form__rank"
-      = form.text_area :content_2, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_2, class: "form__image"
-      = form.text_field :rank_3, placeholder: "3位", class: "form__rank"
-      = form.text_area :content_3, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_3, class: "form__image"
+    = form_with model: @rank, class: :form, local: true do |form|
+      %p.form__message ランキングの作成
+      .form__title 
+        = form.text_field :title, placeholder: "ランキングのタイトル", class: "form__title"
+      .form__first
+        = form.text_field :rank_1, placeholder: "あなたにとっての１位", class: "form__rank"
+        = form.text_area :content_1, placeholder: "概要の記入", class: "form__content"
+        .form__first__image-check
+          .form__first__image-check__background
+        .form__first__image
+          = form.label :image_1, class: "form-image" do
+            %p.image-btn 画像の選択
+            = form.file_field :image
+          = form.label :image_1, class: "form-image" do
+            %p.image-btn 画像の削除
+            = form.file_field :image
+      .form__second
+        = form.text_field :rank_2, placeholder: "あなたにとっての2位", class: "form__rank"
+        = form.text_area :content_2, placeholder: "概要の記入", class: "form__content"
+        .form__first__image-check
+          .form__first__image-check__background
+        .form__second__image
+          = form.label :image_2, class: "form-image" do
+            %p.image-btn 画像を選択
+            = form.file_field :image
+          = form.label :image_2, class: "form-image" do
+            %p.image-btn 画像の削除
+            = form.file_field :image
+      .form__third
+        = form.text_field :rank_3, placeholder: "あなたにとっての3位", class: "form__rank"
+        = form.text_area :content_3, placeholder: "概要の記入", class: "form__content"
+        .form__first__image-check
+          .form__first__image-check__background
+        .form__third__image
+          = form.label :image_3, class: "form-image" do
+            %p.image-btn 画像を選択
+            = form.file_field :image
+          = form.label :image_3, class: "form-image" do
+            %p.image-btn 画像の削除
+            = form.file_field :image
       .form__check
-        = form.collection_check_boxes :tag_ids, Tag.all, :id, :name
-      = form.submit "作成", class: "form__btn"  
+        .form__check__inner
+          = form.collection_check_boxes :tag_ids, Tag.all, :id, :name
+      .form__btn
+        = form.submit "送信", class: "create__btn"
 

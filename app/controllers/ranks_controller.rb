@@ -27,7 +27,7 @@ class RanksController < ApplicationController
   def update
     rank = Rank.find(params[:id])
     rank.update(post_params)
-
+    redirect_to rank_path(params[:id])
   end
 
   def destroy
