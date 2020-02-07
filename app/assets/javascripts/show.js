@@ -3,17 +3,17 @@ window.addEventListener("load", function() {
 //ranks#showでコンテンツボックスにマウスを乗せた時、
 //順位ボックスの色が変わる
   $(function(){
-    $('.flex__right__content__wrapper').hover( function(){
+    $('.smain__flex__right__content__wrapper').hover( function(){
       var rank = $(this).data('rank');
-      $('.flex__right__rank__list--' + rank ).css({
-        borderLeft: 'solid 5px #FF5192'
+      $('.smain__flex__right__rank__list--' + rank ).css({
+        backgroundColor: 'gold'
       });
       return false ;
     });
-    $('.flex__right__content__wrapper').mouseleave( function(){
+    $('.smain__flex__right__content__wrapper').mouseleave( function(){
       var rank = $(this).data('rank');
-      $('.flex__right__rank__list--' + rank ).css({
-        borderLeft: ''
+      $('.smain__flex__right__rank__list--' + rank ).css({
+        backgroundColor: '#fff'
       });
       return false ;
     });
@@ -34,8 +34,8 @@ window.addEventListener("load", function() {
   $(function(){
     $('.content').click( function(){
       var target = $(this).data('target');
-      var rank = $('.flex__right__rank__list--' + target );
-      var img = $('.flex__right__img__list--' + target );
+      var rank = $('.smain__flex__right__rank__list--' + target );
+      var img = $('.smain__flex__right__img__list--' + target );
       if ($(rank).css('margin-bottom') == '180px'){
         $(rank).animate({marginBottom: 5});
       }

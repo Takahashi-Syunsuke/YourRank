@@ -12,39 +12,39 @@
 
   %body
     .header
-      .header__wrapper
-        .header__wrapper__logo
-          = icon('fas', 'crown')
-          = link_to "/", class: "header__wrapper__logo__text" do
-            %p YourRank
-        .header__wrapper__search
-          =form_with url: search_ranks_path, local: true, method: :get do |f|
-            .header__wrapper__search__form
-              .header__wrapper__search__form__input
-                = f.text_field :keyword, id: "user-search-field", class: "header-input", placeholder: "ランキングを検索"
-              .header__wrapper__search__form__btn
-                = f.submit '検索', class: "send-btn"
-            .user-search-result
+      .header__logo    
+        = link_to "/", class: "header__logo__text" do
+          %h1 YourRank
+      .header__search
+      .header__search__form    
+        =form_with url: search_ranks_path, local: true, method: :get do |f|
+          = f.text_field :keyword, id: "user-search-field", class: "header-search-form__input", placeholder: "あなたの気になるランキングを検索"
+          = f.submit 'SEARCH'
+          .user-search-result
 
-        .header__wrapper__right
-          - if user_signed_in?
-            .header__wrapper__right__list
-              = link_to new_rank_path do
-                %p 投稿
-            .header__wrapper__right__list
-              = current_user.nickname
-            .header__wrapper__right__list
-              = link_to destroy_user_session_path, method: :delete do
-                %p Logout
-          - else
-            .header__wrapper__right__list
-            .header__wrapper__right__list
-              = link_to new_user_registration_path do
-                %p Signup
-            .header__wrapper__right__list
-              = link_to new_user_session_path do
-                %p Signin
+      .header__right
+        .header__right__post 
+          -if user_signed_in?
+            = link_to new_rank_path, class: "header__right__post__link" do
+              %p Post
+          -else 
+            = link_to "#", class: "header__right__mypage__link" do
+              %p about YourRank
+        .header__right__mypage
+          -if user_signed_in?
+            = current_user.nickname
+          -else 
+            = link_to new_user_registration_path, class: "header__right__mypage__link" do
+              %p Sign-Up
+        .header__right__logout
+          -if user_signed_in?
+            = link_to destroy_user_session_path, method: :delete, class: "header__right__logout__link" do
+              %p Log-Out
+          -else 
+            = link_to new_user_session_path, class: "header__right__logout__link" do
+              %p Sign-In
+
     = yield
 
     .footer
-      ©️ 2020 Shunsuke_Takahashi
+      ©️ 2019 Shunsuke_Takahashi

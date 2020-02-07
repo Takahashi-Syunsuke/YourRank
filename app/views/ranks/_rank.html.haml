@@ -1,23 +1,22 @@
 .main__wrapper
   .main__wrapper__icon
-    .main__wrapper__icon__background
-      = image_tag rank.user.image, class: "icon__img" if rank.user.image.present?
+    = image_tag rank.user.image, class: "main__wrapper__icon__img" if rank.user.image.present?
   .main__wrapper__name
-    = link_to user_path(rank.user.id) do
+    = link_to user_path(rank.user.id), class: "main__wrapper__name" do
       = rank.user.nickname
-  .main__wrapper__profile
+  .main__wrapper__info 
     = rank.user.profile
   .main__wrapper__title
     = link_to rank_path(rank.id) do
-      = rank.title
-  .main__wrapper__like
-    = icon('fas', 'heart')
-    = Like.where(rank_id: rank).count
-  .main__wrapper__tag
-    - if rank.tags.present?
+      %p.main__wrapper__title__text
+        = rank.title
+    = link_to "#", class: "main__wrapper__title__flex" do
+      = icon('fas', 'heart')
+      %p.main__wrapper__title__flex__text
+        _50 
+    = link_to "#", class: "main__wrapper__title__flex" do
       = icon('fas', 'tag')
-    - rank.tags.each do |tag|
-      = link_to tag_path(rank.tag_ids), class: "icon-tag" do
-        = tag.name
-  .main__wrapper__img
-    = image_tag rank.image_1.url, class: "rank__img" if rank.image_1.url.present?
+      %p.main__wrapper__title__flex__text
+        _
+        - rank.tags.each do |tag|
+          = tag.name
