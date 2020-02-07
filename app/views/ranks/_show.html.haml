@@ -1,61 +1,58 @@
-.smain__flex
-
-  .smain__flex__left
-    .smain__flex__left__title
+.flex
+  .flex__left
+    .flex__left__title
       - if user_signed_in? && current_user.id == @rank.user_id
-        = link_to "#", class: "smain__flex__left__title" do
+        = link_to edit_user_registration_path(current_user) do
           %p ユーザー編集
       -else
         %p 投稿者
-    .smain__flex__left__wrapper
-      .smain__flex__left__wrapper__icon
-        .smain__flex__left__wrapper__icon__background
-        = link_to "#" do
-          = image_tag @rank.user.image, class: "smain__flex__left__wrapper__icon__img" if @rank.user.image.present?
-      .smain__flex__left__wrapper__name 
-        = @rank.user.nickname
-      .smain__flex__left__wrapper__info
+    .flex__left__wrapper
+      .flex__left__wrapper__icon
+        .flex__left__wrapper__icon__background
+          = image_tag @rank.user.image, class: "icon__img" if @rank.user.image.present?
+      .flex__left__wrapper__name 
+        = link_to user_path(@rank.user.id) do
+          = @rank.user.nickname
+      .flex__left__wrapper__info
         = @rank.user.profile
-      .smain__flex__left__wrapper__message
+      .flex__left__wrapper__message
         = icon('fas', 'user-friends')
-      %p.smain__flex__left__wrapper__text Follow me!
+        %p フォローする
 
-  .smain__flex__right
-    .smain__flex__right__rank
-      .smain__flex__right__rank__list--content-1
-        %img{src: "/assets/1.png"}
-      .smain__flex__right__rank__list--content-2
-        %img{src: "/assets/2.png"}
-      .smain__flex__right__rank__list--content-3
-        %img{src: "/assets/3.png"}
-    .smain__flex__right__img
-      .smain__flex__right__img__list--content-1
-        %img{class: "rank__img", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
-      .smain__flex__right__img__list--content-2
-        %img{class: "rank__img", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
-      .smain__flex__right__img__list--content-3
-        %img{class: "rank__img", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
-    .smain__flex__right__content
-      .smain__flex__right__content__wrapper{"data-rank" => "content-1"}
+  .flex__right
+    .flex__right__rank
+      .flex__right__rank__list--content-1
+        .flex__right__rank__list--content-1--img
+      .flex__right__rank__list--content-2
+        .flex__right__rank__list--content-2--img
+      .flex__right__rank__list--content-3
+        .flex__right__rank__list--content-3--img
+    .flex__right__img
+      .flex__right__img__list--content-1
+        = image_tag @rank.image_1.url, class: "rank__img" if @rank.image_1.url.present?
+      .flex__right__img__list--content-2
+        = image_tag @rank.image_2.url, class: "rank__img" if @rank.image_1.url.present?
+      .flex__right__img__list--content-3
+        = image_tag @rank.image_3.url, class: "rank__img" if @rank.image_1.url.present?
+    .flex__right__content
+      .flex__right__content__wrapper{"data-rank" => "content-1"}
         = @rank.rank_1
         %a.content{"data-target" => "content-1"}
           = icon('fas', 'chevron-down')
-      .smain__flex__right__content__wrapper__list
+      .flex__right__content__wrapper__list
         #content-1
           = @rank.content_1
-
-      .smain__flex__right__content__wrapper{"data-rank" => "content-2"}
+      .flex__right__content__wrapper{"data-rank" => "content-2"}
         = @rank.rank_2
         %a.content{"data-target" => "content-2"}
           = icon('fas', 'chevron-down')
-      .smain__flex__right__content__wrapper__list
+      .flex__right__content__wrapper__list
         #content-2
           = @rank.content_2
-
-      .smain__flex__right__content__wrapper{"data-rank" => "content-3"}
+      .flex__right__content__wrapper{"data-rank" => "content-3"}
         = @rank.rank_3
         %a.content{"data-target" => "content-3"}
           = icon('fas', 'chevron-down')
-      .smain__flex__right__content__wrapper__list
+      .flex__right__content__wrapper__list
         #content-3
           = @rank.content_3

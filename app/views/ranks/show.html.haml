@@ -1,65 +1,68 @@
-.smain
-  .smain__title
-    .smain__title__left
-      .smain__title__left__tag
-        = link_to tag_path(@rank.tag_ids), class: "icon-tag" do
-          = icon('fas', 'tag')
-          - @rank.tags.each do |tag|
-            &nbsp
-            = tag.name
-      .smain__title__left__tag--edit
-        = link_to new_tag_path, class: "icon-tag-edit" do
-          = icon('fas', 'edit')
-          %p
-            &nbsp
+.main
+  .title
+    .title__left
+      - if @rank.tags.present?
+        .title__left__tag
+          = link_to tag_path(@rank.tag_ids) do
+            = icon('fas', 'tag')
+            - @rank.tags.each do |tag|
+              = tag.name
+        .title__left__edit
+          = link_to new_tag_path do
+            = icon('fas', 'edit')
             新規タグ
-
-    .smain__title__center
-      .smain__title__cener__text
+    .title__center
+      .title__cener__text
         =@rank.title
-      .smain__title__center__like
-        - if Like.find_by(user_id: current_user.id, rank_id: @rank.id) 
-          = link_to rank_like_path(@rank), method: :delete, class: "to-unlike" do
-            = icon('fas', 'heart')
-        - else 
-          = link_to rank_likes_path(@rank), method: :post, class: "to-like" do
-            = icon('fas', 'heart')
-        &nbsp
-        = @likes_count
+      - if user_signed_in?
+        .title__center__like
+          - if Like.find_by(user_id: current_user.id, rank_id: @rank.id) 
+            = link_to rank_like_path(@rank), method: :delete, class: "to-unlike" do
+              = icon('fas', 'heart')
+          - else 
+            = link_to rank_likes_path(@rank), method: :post, class: "to-like" do
+              = icon('fas', 'heart')
+          &nbsp
+          = @likes_count
 
-    .smain__title__right
+    .title__right
       - if user_signed_in? && current_user.id == @rank.user_id
-        .smain__title__right__edit
+        .title__right__btn
           = link_to edit_rank_path(@rank) do
             %p 編集
-        .smain__title__right__delete
-          = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "smain__title__edit__btn" do
+        .title__right__btn
+          = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "main__title__edit__btn" do
             %p 削除
 
   = render 'show'
 
-  .comment
-    .comment__title
-      %p comment 
-    .comment__flex
-      .comment__flex__message  
-        = image_tag current_user.image, class: "comment__flex__message__icon" if current_user.image.present?
-      -if current_user
-        = form_with model: [@rank, @comment], class: :comment__flex__form, local: true do |form|
-          = form.text_field :content, placeholder: "comment", class: "comment__flex__form__content", rows: "2"
-          = form.submit "作成", class: "comment__flex__form__btn"  
-      -else
-        %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+  .bottom
+    .bottom__flex
+      .flex__left
+        .flex__left__title
+          %p おすすめサイト
+      .bottom__promotion
+    .bottom__comment
+      .bottom__comment__title
+      .bottom__comment__flex
+        .bottom__comment__flex__icon
+        -if user_signed_in?
+          = image_tag current_user.image, class: "bottom__comment__flex__message__icon" if current_user.image.present?
+        -if current_user
+          = form_with model: [@rank, @comment], class: :bottom__comment__flex__form, local: true do |form|
+            = form.text_field :content, placeholder: "comment", class: "comment-input", rows: "2"
+            = form.submit "コメントを投稿", class: "comment-send-btn"
+        -else
+          .comment-error-message 
+            %p ※コメントの投稿にはログインが必要です
 
-    -@comments.each do |comment|
-
-      .comment__content
-        .comment__content__icon
-          .comment__content__icon__background
+      -@comments.each do |comment|
+        .bottom__comment__content
+          .bottom__comment__content__icon
             = link_to user_path(comment.user) do
-              = image_tag comment.user.image, class: "comment__content__icon__background__img" if comment.user.image.present?
-        .comment__content__wrapper
-          .comment__content__wrapper__name
-            = comment.user.nickname
-          .comment__content__wrapper__text
-            = comment.content
+              = image_tag comment.user.image, class: "bottom__comment__content__icon__background__img" if comment.user.image.present?
+          .bottom__comment__content__wrapper
+            .bottom__comment__content__wrapper__name
+              = comment.user.nickname
+            .bottom__comment__content__wrapper__text
+              = comment.content
