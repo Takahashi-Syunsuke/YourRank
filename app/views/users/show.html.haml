@@ -1,23 +1,24 @@
-.smain
-  .smain__flex
-    .smain__flex__left
-      .smain__flex__left__title
-        -if user_signed_in?
-          = link_to "#", class: "smain__flex__left__title" do
-            %p Edit_User_Profile
+.main
+  .flex
+    .flex__left
+      .flex__left__title
+        - if user_signed_in? && current_user.id == @user.id
+          = link_to edit_user_registration_path(current_user) do
+            %p ユーザー編集
         -else
-          %p Editer_Profile
-      .smain__flex__left__wrapper
-        .smain__flex__left__wrapper__icon
-          = link_to "#" do
-            = image_tag @user.image, class: "smain__flex__left__wrapper__icon__img" if @user.image.present?
-        .smain__flex__left__wrapper__name 
-          = @user.nickname
-        .smain__flex__left__wrapper__info
+          %p 投稿者
+      .flex__left__wrapper
+        .flex__left__wrapper__icon
+          .flex__left__wrapper__icon__background
+            = image_tag @user.image, class: "icon__img" if @user.image.present?
+        .flex__left__wrapper__name 
+          = link_to user_path(@user.id) do
+            = @user.nickname
+        .flex__left__wrapper__info
           = @user.profile
-        .smain__flex__left__wrapper__message
+        .flex__left__wrapper__message
           = icon('fas', 'user-friends')
-        %p.smain__flex__left__wrapper__text Follow
-    .smain__flex__show
-      = render "show"
+          %p フォローする
 
+    .flex__show
+      = render "show"
