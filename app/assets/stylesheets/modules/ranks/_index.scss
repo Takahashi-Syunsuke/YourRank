@@ -1,57 +1,85 @@
 .main {
   height: 100vh;
   width: 100%;
-  min-width: 1550px;
-  background-color: #ffff33;
-  padding: 120px 0px 60px 60px;
+  min-width: 1320px;
+  background-color:#EEEEEE;
+  padding: 90px 40px 70px 60px;
   display: flex;
   flex-wrap: wrap;
   overflow: scroll;
+  a {
+    color: black;
+  }
   &__wrapper {
-    height: 400px;
-    width: 300px;
-    background-color: turquoise;
-    margin: 0px 60px 60px 0px;
+    height: 480px;
+    width: 285px;
+    background-color: white;
+    margin: 0px 20px 20px 0px;
+    padding: 0px 20px;
     flex: none;
     flex-flow: column;
     text-align: center;
     &__icon {
-      height: 130px;
+      height: 120px;
       text-align: center;
-      line-height: 150px;
+      line-height: 120px;
       position: relative;
-      &__img {
+      &__background {
         height: 100px;
         width: 100px;
         border-radius: 50%;
         position: absolute;
-        top: 15px;
-        left: 100px;
-        object-fit: cover;
+        top: 10px;
+        left: 72.5px;
+        background-image: url("/assets/default.png");
+        background-size: cover;
+        .icon__img {
+          height: 100px;
+          width: 100px;
+          border-radius: 50%;
+          position: absolute;
+          top: 10px;
+          left: 92.5px;
+          object-fit: cover;
+        }
       }
     }
     &__name {
       height: 30px;
     }
-    &__info {
-      height: 70px;
-      font-size: 12px;
+    &__profile {
+      height: 55px;
+      font-size: 11px;
+      word-break: keep-all;
+      margin-bottom: 5px;
+      border-bottom: 1px solid lightslategray;
     }
     &__title {
-      height: 170px;
-      background-color: #33ffcc;
+      height: 30px;
       display: flex;
       flex-flow: column;
-      &__text {
-        margin: 30px;
-        color: black;
-        font-size: 20px;
+      border-bottom: 1px solid lightslategray;
+      a {
+        height: 30px;
       }
-      &__flex {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
+    }
+    &__like {
+      height: 20px;
+      font-size: 12px;
+      i {
+        color: red;
+      }
+    }
+    &__tag {
+      height: 20px;
+      font-size: 12px;
+    }
+    &__img {
+      height: 200px;
+      padding: 10px;
+      .rank__img {
+        height: 180px;
+        width: auto;
       }
     }
   }

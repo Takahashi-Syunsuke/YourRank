@@ -1,18 +1,22 @@
 -@ranks.each do |rank|
-  .smain__flex__show__wrapper
-    .smain__flex__show__wrapper__img
-      %img{class: "smain__flex__show__wrapper__img__thumbnail", src: "https://theriver.jp/wp-content/uploads/2019/08/SW9_Teaser2_1-Sht_v5_Lg-1024x1516.jpg"}
-    .smain__flex__show__wrapper__right
-      .smain__flex__show__wrapper__right__wrapper
-        .smain__flex__show__wrapper__right__wrapper__title
+  .flex__show__wrapper
+    .flex__show__wrapper__img
+      = image_tag rank.image_1.url, class: "flex__show__wrapper__img__background" if rank.image_1.url.present?
+    .flex__show__wrapper__right
+      .flex__show__wrapper__right__wrapper
+        .flex__show__wrapper__right__wrapper__title
           = link_to rank_path(rank.id) do
             = rank.title
-        .smain__flex__show__wrapper__right__wrapper__like   
-          = link_to "#" do
-            = icon('fas', 'heart')
-            _50
-      .smain__flex__show__wrapper__right__bottom 
-        = link_to "#" do
-          = icon('fas', 'tag')
-          _映画
+        .flex__show__wrapper__right__wrapper__time
+          = rank.created_at
+        .flex__show__wrapper__right__wrapper__tag
+          - if rank.tags.present?
+            = icon('fas', 'tag')
+          - rank.tags.each do |tag|
+            = link_to tag_path(rank.tag_ids), class: "icon-tag" do
+              = tag.name  
+      .flex__show__wrapper__right__wrapper__like   
+        = icon('fas', 'heart')
+        = Like.where(rank_id: rank).count
+
 

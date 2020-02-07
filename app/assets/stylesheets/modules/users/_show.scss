@@ -1,4 +1,4 @@
-.smain__flex__show {
+.flex__show {
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -12,34 +12,48 @@
       min-width: 140px;
       margin: 5px;
       text-align: center;
-      &__thumbnail {
-        height: 140px;
-        width: auto;
-        object-fit: cover;
+    &__background {
+      height: 140px;
+      width: auto;
+      object-fit: cover;
+      background-color: white;
       }
     }
     &__right {
       width: calc(100% - 150px);
+      height: 150px;
       display: flex;
-      flex-flow: column;
       &__wrapper {
+        width: 100%;
+        margin: 10px 0px;
         display: flex;
-        line-height: 100px;
+        flex-flow: column;
         &__title {
-          height: 100px;
+          height: 50px;
           width: calc(100% - 100px);
-          margin: 5px;
           font-size: 20px;
+          line-height: 50px;
+        }
+        &__time {
+          height: 40px;
+          line-height: 40px;
+          font-size: 12px;
+          border-bottom: 1px solid lightslategrey;
+        }
+        &__tag {
+          height: 40px;
+          line-height: 40px;
+          font-size: 12px;
         }
         &__like {
-          height: 100px;
-          width: 100px;
-          margin: 5px;
+          height: 130px;
+          width: 50px;
+          margin: 25px;
+          text-align: center;
+          i {
+            color: red;
+          }
         }
-      }
-      &__bottom {
-        line-height: 30px;
-        margin: 5px;
       }
     }
   }
