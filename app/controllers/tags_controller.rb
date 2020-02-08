@@ -6,11 +6,12 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new 
+    @tags = Tag.all
   end
 
   def create
     @tag = Tag.create(post_params)
-    redirect_to root_path
+    redirect_to new_tag_path
   end
 
   private

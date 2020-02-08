@@ -7,7 +7,6 @@
   margin-bottom: 20px; 
   border-radius: 5px 5px 5px 5px;
 }
-
 @mixin input-image {
   height: 30px;
   width: 200px;
@@ -20,226 +19,376 @@
   line-height: 26px;
   cursor: pointer;
 }
+
 .main {
-  &__new {
-    width: 600px;
-    margin-bottom: 10px;
-    .form {
-      width: 100%;
-      display: flex;
-      flex-flow: column;
-      font-size: 14px;
-      input {
-        border: none;
-        padding: 0px 10px;
-        color: dimgray;
-      }
-      textarea {
-        border: none;
-        padding: 10px;
-        color: dimgray;
-      }
-    &__message {
-      height: 30px;
-      background-color: lightslategrey;
+  &__content {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding-right: 20px;
+    &__map {
+      height: 1495px;
+      width: 100px;
+      margin-right: 30px;
       color: white;
-      font-size: 20px;
-      margin-bottom: 20px; 
-      border-radius: 30px 30px 30px 30px;
       text-align: center;
-    }
-    &__title {
-      height: 40px;
-      background-color: lightslategrey;
-      display: flex;
-      flex-flow: column;
-      margin-bottom: 20px;
-      border-radius: 5px 5px 5px 5px;
-      input {
-        height: 30px;
-        margin: 5px; 
-        background-color: white;
-      }
-    }
-    &__first {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
-        }
-      }
-      input {
-        height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px;
-      }
-      textarea {
+      &__title {
         height: 90px;
-        margin: 5px 5px 0px 5px; 
+        background-color: #ffb6c1;
+        margin-bottom: 20px;
+        line-height: 90px;
+        position: relative;
+      }
+      &__title::after {
+        content: "";
+        border-top: 40px solid #ffb6c1;
+        border-right: 50px solid transparent;
+        border-left: 50px solid transparent; 
+        position: absolute;
+        top: 90px;
+        left: 0px;
+        z-index: 2;
+      }
+      &__content {
+        height: 375px;
         background-color: white;
+        margin-bottom: 20px;
+        line-height: 375px;
+        position: relative;
+      }
+      &__content::after {
+        content: "";
+        border-top: 40px solid white;
+        border-right: 50px solid transparent;
+        border-left: 50px solid transparent; 
+        position: absolute;
+        top: 375px;
+        left: 0px;
+        z-index: 2;
+      }
+      #step1 {
+        background-color: #dda0dd;
+      }
+      #step1::after {
+        border-top: 40px solid #dda0dd;
+      }
+      #step2 {
+        background-color: #6495ed;
+      }
+      #step2::after {
+        border-top: 40px solid #6495ed;
+      }
+      #step3 {
+        background-color: #00bfff;
+      }
+      #step3::after {
+        border-top: 40px solid #00bfff;
+      }
+      &__tag {
+        height: 200px;
+        background-color: #40e0d0;
+        line-height: 200px;
+        position: relative;
+      }
+      &__tag::after {
+        content: "";
+        border-top: 40px solid #40e0d0;
+        border-right: 50px solid transparent;
+        border-left: 50px solid transparent; 
+        position: absolute;
+        top: 200px;
+        left: 0px;
+      }
+    }
+    &__label {
+      height: 1495px;
+      width: calc(100% - 1090px);
+      min-width: 230px;
+      margin-right: 30px;
+      color: white;
+      font-size: 13px;
+      text-align: right;
+      .gray-text {
+        color: dimgray;
+      }
+      &__title {
+        height: 40px;
+        padding: 5px 20px 5px 20px;
+        margin: 50px 0px 20px 0px;
+        background-color: #ffb6c1;
+        line-height: 30px;
+        }
+      &__rank {
+        height: 40px;
+        padding: 5px 20px 5px 20px;
+        margin: 0px 0px 5px 0px;
+        background-color: white;
+        line-height: 30px;
+      }
+      &__content {
+        height: 90px;
+        padding: 5px 20px 5px 20px;
+        margin: 0px 0px 5px 0px;
+        background-color: white;
+        line-height: 80px;
       }
       &__image {
-        display: flex;
-        margin: auto;
-        input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
-        }
+        height: 195px;
+        padding: 5px 20px 5px 20px;
+        margin: 0px 0px 60px 0px;
+        background-color: white;
+        line-height: 185px;
+      }
+      &__tag {
+        height: 195px;  
+        padding: 5px 20px 5px 20px;
+        background-color: #40e0d0;
+        align-items: center;
+      }
+      #label-1 {
+        background-color: #dda0dd;
+      }
+      #label-2 {
+        background-color: #6495ed;
+      }
+      #label-3 {
+        background-color: #00bfff;
+      }
+      #tag {
+        margin-top: 55px;
+      }
+      #tag-link {
+        height: 20px;
+        width: 100px;
+        background-color: #00BFFF;
+        color: white;
+        display: inline-block;
+        text-align: center;
+        border-radius: 30px 30px 30px 30px;
+        margin: 5px 0px 3px 0px;
+        cursor: pointer;
       }
     }
-    &__second {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
+    &__new {
+      width: 810px;
+      margin-bottom: 10px;
+      .form {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        font-size: 14px;
+        input {
+          border: none;
+          padding: 0px 10px;
+          color: dimgray;
         }
-      }
-      input {
+        textarea {
+          border: none;
+          padding: 10px;
+          color: dimgray;
+        }
+      &__message {
         height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
+        background-color: lightslategrey;
+        color: white;
+        font-size: 20px;
+        margin-bottom: 20px; 
+        text-align: center;
       }
-      textarea {
-        height: 90px;
-        margin: 5px 5px 0px 5px; 
-        background-color: white;
-      }
-      &__image {
+      &__title {
+        height: 40px;
+        background-color: lightslategrey;
         display: flex;
-        margin: auto;
+        flex-flow: column;
+        margin-bottom: 20px;
+        border-radius: 5px 5px 5px 5px;
         input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
-        }
-      }
-    }
-    &__third {
-      @include form-figure;
-      &__image-check {
-        height: 200px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-        position: relative;
-        &__background {
-          height: 190px;
-          width: 190px;
-          margin: 5px;
-          background-color: gray;
-          position: absolute;
-          left: 200px;
-          background-image: url("/assets/default.png");
-          background-size: cover;
-        }
-      }
-      input {
-        height: 30px;
-        background-color: white;
-        margin: 5px 5px 0px 5px; 
-      }
-      textarea {
-        height: 90px;
-        margin: 5px 5px 0px 5px; 
-        background-color: white;
-      }
-      &__image {
-        display: flex;
-        margin: auto;
-        input {
-          display: none;
-        }
-        .image-btn {
-          @include input-image;
-          width: 120px;
-          margin: 5px 5px 5px 5px; 
-        }
-      }
-    }
-    &__check {
-      height: 200px;
-      background-color: lightslategray;
-      display: flex;
-      margin-bottom: 20px;
-      border-radius: 5px 5px 5px 5px;
-      &__inner {
-        height: 190px;
-        width: 590px;
-        margin: 5px;
-        padding: 5px;
-        background-color: white;
-        word-break: keep-all;
-        display: flex;
-        flex-wrap: wrap;
-        overflow: scroll;
-        input {
-          display: none;
-        }
-        input + label {
           height: 30px;
-          background-color: turquoise;
-          border: 2px solid turquoise;
-          color: white;
-          font-size: 11px;
-          margin-right: 3px;
-          padding: 0px 3px;
-          border-radius: 5px 5px 5px 5px;
-          line-height: 24px;
-          cursor: pointer;
+          margin: 5px; 
+          background-color: white;
         }
+      }
+      &__first {
+        @include form-figure;
+        &__image-check {
+          height: 200px;
+          background-color: white;
+          margin: 5px 5px 0px 5px; 
+          position: relative;
+          &__background {
+            height: 190px;
+            width: 190px;
+            margin: 5px;
+            position: absolute;
+            left: 305px;
+            border-left: 1px solid lightgrey; 
+            border-right: 1px solid lightgrey; 
+          }
         }
-        input:checked + label {
+        input {
           height: 30px;
           background-color: white;
-          border: 2px solid turquoise;
-          color: dimgray;
-          margin-right: 3px;
-          padding: 0px 3px;
-          border-radius: 5px 5px 5px 5px;
-          line-height: 24px;
-          cursor: pointer;
+          margin: 5px 5px 0px 5px;
+        }
+        textarea {
+          height: 90px;
+          margin: 5px 5px 0px 5px; 
+          background-color: white;
+        }
+        &__image {
+          display: flex;
+          margin: auto;
+          input {
+            display: none;
+          }
+          .image-btn {
+            @include input-image;
+            width: 120px;
+            margin: 5px 5px 5px 5px; 
+          }
         }
       }
-    }
-    .create__btn {
-      height: 30px;
-      width: 300px;
-      margin-left: 150px;
-      background-color: #00BFFF;
-      border: 2px solid #00BFFF;
-      border-radius: 30px 30px 30px 30px;
-      cursor: pointer;
-    }
-    input.create__btn {
-      color: white;
+      &__second {
+        @include form-figure;
+        &__image-check {
+          height: 200px;
+          background-color: white;
+          margin: 5px 5px 0px 5px; 
+          position: relative;
+          &__background {
+            height: 190px;
+            width: 190px;
+            margin: 5px;
+            position: absolute;
+            left: 305px;
+            border-left: 1px solid lightgrey; 
+            border-right: 1px solid lightgrey; 
+          }
+        }
+        input {
+          height: 30px;
+          background-color: white;
+          margin: 5px 5px 0px 5px; 
+        }
+        textarea {
+          height: 90px;
+          margin: 5px 5px 0px 5px; 
+          background-color: white;
+        }
+        &__image {
+          display: flex;
+          margin: auto;
+          input {
+            display: none;
+          }
+          .image-btn {
+            @include input-image;
+            width: 120px;
+            margin: 5px 5px 5px 5px; 
+          }
+        }
+      }
+      &__third {
+        @include form-figure;
+        &__image-check {
+          height: 200px;
+          background-color: white;
+          margin: 5px 5px 0px 5px; 
+          position: relative;
+          &__background {
+            height: 190px;
+            width: 190px;
+            margin: 5px;
+            position: absolute;
+            left: 305px;
+            border-left: 1px solid lightgrey; 
+            border-right: 1px solid lightgrey; 
+          }
+        }
+        input {
+          height: 30px;
+          background-color: white;
+          margin: 5px 5px 0px 5px; 
+        }
+        textarea {
+          height: 90px;
+          margin: 5px 5px 0px 5px; 
+          background-color: white;
+        }
+        &__image {
+          display: flex;
+          margin: auto;
+          input {
+            display: none;
+          }
+          .image-btn {
+            @include input-image;
+            width: 120px;
+            margin: 5px 5px 5px 5px; 
+          }
+        }
+      }
+      &__check {
+        height: 200px;
+        background-color: lightslategray;
+        display: flex;
+        margin-bottom: 20px;
+        border-radius: 5px 5px 5px 5px;
+        &__background {
+          height: 190px;
+          width: 800px;
+          background-color: white;
+          margin: 5px;
+          &__inner {
+            max-height: 200px;
+            padding: 5px;
+            background-color: white;
+            word-break: keep-all;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: scroll;
+            input {
+              display: none;
+            }
+            input + label {
+              height: 30px;
+              background-color: turquoise;
+              border: 2px solid turquoise;
+              color: white;
+              font-size: 11px;
+              margin: 0px 3px 3px 0px;
+              padding: 0px 3px;
+              border-radius: 5px 5px 5px 5px;
+              line-height: 24px;
+              cursor: pointer;
+            }
+            }
+            input:checked + label {
+              height: 30px;
+              background-color: white;
+              border: 2px solid turquoise;
+              color: dimgray;
+              margin-right: 3px;
+              padding: 0px 3px;
+              border-radius: 5px 5px 5px 5px;
+              line-height: 24px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .create__btn {
+        height: 50px;
+        width: 310px;
+        margin-left: 250px;
+        background-color: #00BFFF;
+        border: 2px solid #00BFFF;
+        border-radius: 30px 30px 30px 30px;
+        cursor: pointer;
+      }
+      input.create__btn {
+        color: white;
+      }
     }
   }
 }

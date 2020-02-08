@@ -1,17 +1,88 @@
 .main
-  .main__new
-    = form_with model: @rank, class: :form, local: true do |form| 
-      %h1.form__message Edit YourRank!
-      = form.text_field :title, placeholder: "ランキングタイトル", class: "form__title"
-      = form.text_field :rank_1, placeholder: "１位", class: "form__rank"
-      = form.text_area :content_1, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_1, class: "form__image"
-      = form.text_field :rank_2, placeholder: "2位", class: "form__rank"
-      = form.text_area :content_2, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_2, class: "form__image"
-      = form.text_field :rank_3, placeholder: "3位", class: "form__rank"
-      = form.text_area :content_3, placeholder: "おすすめポイント", class: "form__content"
-      = form.file_field :image_3, class: "form__image"
-      = form.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: "form__rank" 
-      = form.submit "作成", class: "form__btn"  
+  .main__content
+    .main__content__map
+      .main__content__map__title
+        %p STEP1
+      .main__content__map__content#step1
+        %p STEP2     
+      .main__content__map__content#step2
+        %p STEP3
+      .main__content__map__content#step3
+        %p STEP4
+      .main__content__map__tag
+        %p STEP5
+    .main__content__label
+      .main__content__label__title
+        %p ※必須：ランキングタイトル
+      .main__content__label__rank#label-1
+        %p ※必須：１位
+      .main__content__label__content#label-1
+        %p.gray-text 任意：概要
+      .main__content__label__image#label-1
+        %p.gray-text 任意：画像（1枚まで）
+      .main__content__label__rank#label-2
+        %p ※必須：２位
+      .main__content__label__content#label-2
+        %p.gray-text 任意：概要
+      .main__content__label__image#label-2
+        %p.gray-text 任意：画像（1枚まで）
+      .main__content__label__rank#label-3
+        %p ※必須：３位
+      .main__content__label__content#label-3
+        %p.gray-text 任意：概要
+      .main__content__label__image#label-3
+        %p.gray-text 任意：画像（1枚まで）
+      .main__content__label__tag
+        %p.gray-text#tag 任意：タグ（3つまで）
+        = link_to new_tag_path, id: "tag-link" do
+          タグの作成
+        %br 画面遷移し、内容が失われます
+    .main__content__new
+      = form_with model: @rank, class: :form, local: true do |form|
+        %p.form__message ランキングの編集
+        .form__title 
+          = form.text_field :title, placeholder: "ランキングのタイトル", class: "form__title"
+        .form__first
+          = form.text_field :rank_1, placeholder: "あなたにとっての１位", class: "form__rank"
+          = form.text_area :content_1, placeholder: "概要の記入", class: "form__content"
+          .form__first__image-check
+            .form__first__image-check__background
+          .form__first__image
+            = form.label :image_1, class: "form-image" do
+              %p.image-btn 画像の選択
+              = form.file_field :image_1
+            = form.label :image_1, class: "form-image" do
+              %p.image-btn 画像の削除
+              = form.file_field :image_1
+        .form__second
+          = form.text_field :rank_2, placeholder: "あなたにとっての2位", class: "form__rank"
+          = form.text_area :content_2, placeholder: "概要の記入", class: "form__content"
+          .form__first__image-check
+            .form__first__image-check__background
+          .form__second__image
+            = form.label :image_2, class: "form-image" do
+              %p.image-btn 画像を選択
+              = form.file_field :image_2
+            = form.label :image_2, class: "form-image" do
+              %p.image-btn 画像の削除
+              = form.file_field :image_2
+        .form__third
+          = form.text_field :rank_3, placeholder: "あなたにとっての3位", class: "form__rank"
+          = form.text_area :content_3, placeholder: "概要の記入", class: "form__content"
+          .form__first__image-check
+            .form__first__image-check__background
+          .form__third__image
+            = form.label :image_3, class: "form-image" do
+              %p.image-btn 画像を選択
+              = form.file_field :image_3
+            = form.label :image_3, class: "form-image" do
+              %p.image-btn 画像の削除
+              = form.file_field :image_3
+        .form__check
+          .form__check__background
+            .form__check__background__inner
+              = form.collection_check_boxes :tag_ids, Tag.all, :id, :name
+        .form__btn
+          = form.submit "更新", class: "create__btn"
+
 

@@ -1,6 +1,19 @@
 .main
-  %h1 タグを作ってみよう
-
-  = form_with model: @tag, class: :form, local: true do |form| 
-    = form.text_field :name, placeholder: "タグ", class: "form__name"
-    = form.submit "作成", class: "form__btn"
+  = form_with model: @tag, class: :form__tag, local: true do |form| 
+    %p 新規タグの作成（10文字まで）
+    .form__tag__name
+      = form.text_field :name, placeholder: "タグの作成", class: "tag__name"
+    .form__tag__btn
+      = form.submit "作成", class: "tag__btn"
+    %p 既存のタグ
+    .tag__wrapper
+      .tag__wrapper__background
+        .tag__wrapper__background__inner
+          - @tags.each do |tag|
+            .tag__wrapper__background__inner__gallery
+              = tag.name
+    .tag__links
+      = link_to root_path, class: "tag__links__item" do
+        投稿一覧画面
+      = link_to new_rank_path, class: "tag__links__item" do
+        ランキング投稿画面
