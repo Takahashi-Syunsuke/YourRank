@@ -4,7 +4,7 @@
   background-color:#FF5192;
   color: white;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   &__wrapper {
     width: 1320px;
     display: flex;
@@ -59,9 +59,9 @@
       }
     }
     &__right {
-      height: 50px;
+      height: 45px;
       width: 390px;
-      margin: 5px 50px 5px 0px;
+      margin: 7.5px 50px 7.5px 0px;
       font-size: 15px;
       display: flex;
       align-items: center;
@@ -71,7 +71,7 @@
         background-color:#00BFFF;
         margin-right: 10px;
         text-align: center;
-        line-height: 50px;
+        line-height: 45px;
         a {
           color: white;
         }
@@ -89,6 +89,7 @@
   text-align: center;
   line-height: 60px;
   color: white;
+  z-index: 3;
 }
 
 .search__box {

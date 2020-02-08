@@ -31,9 +31,9 @@
       .flex__right__img__list--content-1
         = image_tag @rank.image_1.url, class: "rank__img" if @rank.image_1.url.present?
       .flex__right__img__list--content-2
-        = image_tag @rank.image_2.url, class: "rank__img" if @rank.image_1.url.present?
+        = image_tag @rank.image_2.url, class: "rank__img" if @rank.image_2.url.present?
       .flex__right__img__list--content-3
-        = image_tag @rank.image_3.url, class: "rank__img" if @rank.image_1.url.present?
+        = image_tag @rank.image_3.url, class: "rank__img" if @rank.image_3.url.present?
     .flex__right__content
       .flex__right__content__wrapper{"data-rank" => "content-1"}
         = @rank.rank_1

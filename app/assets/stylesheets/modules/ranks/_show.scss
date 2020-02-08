@@ -245,7 +245,7 @@
         height: 170px;
         background-color: white;
         margin: 0px 0px 5px 0px;
-        padding: 30px 10px;
+        padding: 30px 10px 30px 22px;
         line-height: 110px;
         display: flex;
         flex-flow: column;
@@ -253,6 +253,7 @@
         i {
           position: absolute;
           top: 140px;
+          left: 50%;
         }
       }
     }
