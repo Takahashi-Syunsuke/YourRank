@@ -24,24 +24,14 @@
       text-align: center;
       line-height: 120px;
       position: relative;
-      &__background {
+      .icon__img {
         height: 100px;
         width: 100px;
         border-radius: 50%;
         position: absolute;
         top: 10px;
         left: 72.5px;
-        background-image: url("/assets/default.png");
-        background-size: cover;
-        .icon__img {
-          height: 100px;
-          width: 100px;
-          border-radius: 50%;
-          position: absolute;
-          top: 10px;
-          left: 92.5px;
-          object-fit: cover;
-        }
+        object-fit: cover;
       }
     }
     &__name {
