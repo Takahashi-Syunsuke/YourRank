@@ -1,0 +1,55 @@
+.main
+  .main__flex  
+    -# Edit #{resource_name.to_s.humanize}
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .field__content
+        .field__content__inner
+          .field
+            %p.big-text ユーザー情報更新
+            =f.label :ユーザー名
+            %br
+            =f.text_field :nickname, autofocus: true
+          .field
+            = f.label :email
+            %br
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            %div
+              Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .field
+            = f.label :新しいパスワード
+            %p.small-text ※変更しない場合は空欄
+            = f.password_field :password, autocomplete: "new-password"
+            -# - if @minimum_password_length
+            -#   %br/
+            -#   %em
+            -#     = @minimum_password_length
+            -#     characters minimum
+          .field
+            = f.label :新しいパスワード（確認用）
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          .field
+            = f.label :現在のパスワード
+            %p.small-text ※変更点があれば、入力が必要です
+            = f.password_field :current_password, autocomplete: "current-password", class: "user-edit-space"
+          .field
+            .icon__wrapper
+              .icon
+              .field-label#icon
+                = f.label :image, class: "user-new-btn"
+              .field-icon-reset
+                Reset
+              .field-input#btn
+                = f.file_field :image
+          .field
+            .field-label
+              = f.label :プロフィール
+            .field-input
+              = f.text_area :profile, placeholder: "プロフィール"
+          .actions
+            = f.submit "ユーザー情報の更新"
+
+    #{button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか?" }, method: :delete, class: "user-edit-delete"}
+
+    -# = link_to "戻る", :back

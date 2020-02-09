@@ -45,9 +45,12 @@
     .bottom__comment
       .bottom__comment__title
       .bottom__comment__flex
-        .bottom__comment__flex__icon
-        -if user_signed_in?
-          = image_tag current_user.image, class: "bottom__comment__flex__message__icon" if current_user.image.present?
+        .bottom__comment__flex__img
+          -if user_signed_in?
+            - if current_user.image.url.present?  
+              = image_tag current_user.image.url, class: "icon__image"
+            - else
+              = image_tag ('default.png'), class: "icon__image"
         -if current_user
           = form_with model: [@rank, @comment], class: :bottom__comment__flex__form, local: true do |form|
             = form.text_field :content, placeholder: "comment", class: "comment-input", rows: "2"
@@ -59,8 +62,12 @@
       -@comments.each do |comment|
         .bottom__comment__content
           .bottom__comment__content__icon
-            = link_to user_path(comment.user) do
-              = image_tag comment.user.image, class: "bottom__comment__content__icon__background__img" if comment.user.image.present?
+            - if comment.user.image.url.present?  
+              = link_to user_path(comment.user) do
+                = image_tag comment.user.image.url, class: "comment__image"
+            - else
+              = link_to user_path(comment.user) do
+                = image_tag ('default.png'), class: "comment__image"
           .bottom__comment__content__wrapper
             .bottom__comment__content__wrapper__name
               = comment.user.nickname

@@ -1,32 +1,49 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Create Account
-      %h5 新規アカウントの作成
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
+.main
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .field__content
+      .field__content__inner
         .field
+          %p.big-text ユーザー新規登録
+          %p.attention 必須項目
           .field-label
-            = f.label :nickname
+            = f.label :ユーザーネーム
           .field-input
-            = f.text_field :nickname, autofocus: true
+            = f.text_field :nickname, autofocus: true, placeholder: "ユーザーネーム", id: "user-new-input"
         .field
           .field-label
             = f.label :email
           .field-input
-            = f.email_field :email
+            = f.email_field :email, placeholder: "Email", id: "user-new-input"
         .field
           .field-label
-            = f.label :password
-            %i (英数字8文字以上)
+            = f.label :パスワード
+            %span.small-text
+              ※英数字8文字以上
           .field-input
-            = f.password_field :password, autocomplete: "off"
+            = f.password_field :password, autocomplete: "off", placeholder: "パスワード", id: "user-new-input"
         .field
           .field-label
-            = f.label :password_confirmation
+            = f.label :パスワード
+            %span.small-text
+              ※確認用
           .field-input
-            = f.password_field :password_confirmation, autocomplete: "off"
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード（確認用）", id: "user-new-input"
+        
+        %p.attention 任意項目（後から編集できます）
+        .field
+          .icon__wrapper
+            .icon#icon-preview
+            .field-label#icon
+              = f.label :image, class: "user-new-btn", id: "user-new-image"
+            .field-icon-reset
+              Reset
+            .field-input#btn
+              = f.file_field :image
+        .field
+          .field-label
+            = f.label :プロフィール
+          .field-input
+            = f.text_area :profile, placeholder: "プロフィール", id: "user-new-textarea"
         .actions
-          = f.submit "Create Account", class: 'btn'
+          = f.submit "登録して始める", id: 'user-new-btn'

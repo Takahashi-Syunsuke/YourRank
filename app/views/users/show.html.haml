@@ -9,8 +9,10 @@
           %p 投稿者
       .flex__left__wrapper
         .flex__left__wrapper__icon
-          .flex__left__wrapper__icon__background
-            = image_tag @user.image, class: "icon__img" if @user.image.present?
+          - if @user.image.url.present?
+            = image_tag @user.image.url, class: "icon__img"
+          - else
+            = image_tag ('default.png'), class: "icon__img"
         .flex__left__wrapper__name 
           = link_to user_path(@user.id) do
             = @user.nickname
