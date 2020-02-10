@@ -14,8 +14,6 @@ $(function(){
         $preview.empty();
         $preview.append($('<img>').attr({
                   src: e.target.result,
-                  height: "190px",
-                  width: "auto",
                   class: "preview-1",
                   title: file.name
               }));
@@ -30,7 +28,7 @@ $(function(){
   $('#image-rank-2').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
-        $preview = $(".form__first__image-check__background#rank-2");
+        $preview = $(".form__second__image-check__background#rank-2");
         t = this;
 
     if(file.type.indexOf("image") < 0){
@@ -42,8 +40,6 @@ $(function(){
         $preview.empty();
         $preview.append($('<img>').attr({
                   src: e.target.result,
-                  height: "190px",
-                  width: "auto",
                   class: "preview-2",
                   title: file.name
               }));
@@ -58,7 +54,7 @@ $(function(){
   $('#image-rank-3').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
-        $preview = $(".form__first__image-check__background#rank-3");
+        $preview = $(".form__third__image-check__background#rank-3");
         t = this;
 
     if(file.type.indexOf("image") < 0){
@@ -70,8 +66,6 @@ $(function(){
         $preview.empty();
         $preview.append($('<img>').attr({
                   src: e.target.result,
-                  height: "190px",
-                  width: "auto",
                   class: "preview-3",
                   title: file.name
               }));

@@ -226,6 +226,11 @@
             border-left: 1px solid lightgrey; 
             border-right: 1px solid lightgrey; 
           }
+          .preview-1 {
+            height: 188px;
+            width: 188px;
+            object-fit: contain;
+          }
         }
         input {
           height: 30px;
@@ -271,6 +276,11 @@
             border-left: 1px solid lightgrey; 
             border-right: 1px solid lightgrey; 
           }
+          .preview-2 {
+            height: 188px;
+            width: 188px;
+            object-fit: contain;
+          }
         }
         input {
           height: 30px;
@@ -315,6 +325,11 @@
             left: 305px;
             border-left: 1px solid lightgrey; 
             border-right: 1px solid lightgrey; 
+          }
+          .preview-3 {
+            height: 188px;
+            width: 188px;
+            object-fit: contain;
           }
         }
         input {

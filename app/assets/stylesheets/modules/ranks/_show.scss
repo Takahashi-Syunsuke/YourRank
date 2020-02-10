@@ -223,8 +223,8 @@
         }  
       .rank__img {
         height: 150px;
-        width: auto;
-        align-items: center;
+        width: 150px;
+        object-fit: contain;
       }
     }
     &__content {

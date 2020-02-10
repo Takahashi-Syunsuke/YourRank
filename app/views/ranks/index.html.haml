@@ -1,3 +1,14 @@
-.main
-  = render @ranks
+- if user_signed_in?
+  .main
+    = render @ranks
+- else    
+  .overlay
+    .overlay__btn
+      %p.overlay__btn__message ー あなたがつくるトレンド ー
+      %p.overlay__btn__title YourRank
+      %p.overlay__btn__enter [ENTER]
+
+  .main
+    = render @ranks
+
 
