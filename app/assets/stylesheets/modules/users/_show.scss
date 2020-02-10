@@ -14,8 +14,8 @@
       text-align: center;
     &__background {
       height: 140px;
-      width: auto;
-      object-fit: cover;
+      width: 140px;
+      object-fit: contain;
       background-color: white;
       }
     }
