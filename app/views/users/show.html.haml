@@ -15,9 +15,9 @@
             = image_tag ('default.png'), class: "icon__img"
         .flex__left__wrapper__name 
           = link_to user_path(@user.id) do
-            = @user.nickname
+            = @user.nickname.truncate(15)
         .flex__left__wrapper__info
-          = @user.profile
+          = @user.profile.truncate(60)
         .flex__left__wrapper__message
           = icon('fas', 'user-friends')
           %p フォローする

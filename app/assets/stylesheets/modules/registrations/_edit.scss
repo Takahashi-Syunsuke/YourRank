@@ -17,3 +17,10 @@
   cursor: pointer;
   position: relative;
 }
+
+.user-edit-image {
+  height: 98px;
+  width: 98px;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -13,27 +13,27 @@
         %p STEP5
     .main__content__label
       .main__content__label__title
-        %p ※必須：ランキングタイトル
+        %p ※必須:タイトル(25文字まで)
       .main__content__label__rank#label-1
-        %p ※必須：１位
+        %p ※必須:１位(30文字まで)
       .main__content__label__content#label-1
-        %p.gray-text 任意：概要
+        %p.gray-text 任意:概要(240文字まで)
       .main__content__label__image#label-1
-        %p.gray-text 任意：画像（1枚まで）
+        %p.gray-text 任意:画像(1枚まで)
       .main__content__label__rank#label-2
-        %p ※必須：２位
+        %p ※必須:２位(30文字まで)
       .main__content__label__content#label-2
-        %p.gray-text 任意：概要
+        %p.gray-text 任意:概要(240文字まで)
       .main__content__label__image#label-2
-        %p.gray-text 任意：画像（1枚まで）
+        %p.gray-text 任意:画像(1枚まで)
       .main__content__label__rank#label-3
-        %p ※必須：３位
+        %p ※必須:３位(30文字まで)
       .main__content__label__content#label-3
-        %p.gray-text 任意：概要
+        %p.gray-text 任意:概要(240文字まで)
       .main__content__label__image#label-3
-        %p.gray-text 任意：画像（1枚まで）
+        %p.gray-text 任意:画像(1枚まで)
       .main__content__label__tag
-        %p.gray-text#tag 任意：タグ（3つまで）
+        %p.gray-text#tag 任意:タグ(3つまで)
         = link_to new_tag_path, id: "tag-link" do
           タグの作成
         %br 画面遷移し、内容が失われます
@@ -47,33 +47,36 @@
           = form.text_area :content_1, placeholder: "概要の記入", class: "form__content"
           .form__first__image-check
             .form__first__image-check__background#rank-1
+              - if @rank.image_1.url 
+                = image_tag @rank.image_1.url, class: "preview-1", id: "edit-rank-image"
           .form__first__image
             = form.label :image_1, class: "form-image", id: "image-rank-1" do
               %p.image-btn 画像の選択
               = form.file_field :image_1
-            #delete-rank-1 削除
 
         .form__second
           = form.text_field :rank_2, placeholder: "あなたにとっての2位", class: "form__rank"
           = form.text_area :content_2, placeholder: "概要の記入", class: "form__content"
-          .form__first__image-check
-            .form__first__image-check__background#rank-2
+          .form__second__image-check
+            .form__second__image-check__background#rank-2
+              - if @rank.image_2.url 
+                = image_tag @rank.image_2.url, class: "preview-2", id: "edit-rank-image"
           .form__second__image
             = form.label :image_2, class: "form-image", id: "image-rank-2" do
               %p.image-btn 画像を選択
               = form.file_field :image_2
-            #delete-rank-2 削除
 
         .form__third
           = form.text_field :rank_3, placeholder: "あなたにとっての3位", class: "form__rank"
           = form.text_area :content_3, placeholder: "概要の記入", class: "form__content"
-          .form__first__image-check
-            .form__first__image-check__background#rank-3
+          .form__third__image-check
+            .form__third__image-check__background#rank-3
+              - if @rank.image_3.url 
+                = image_tag @rank.image_3.url, class: "preview-3", id: "edit-rank-image"
           .form__third__image
             = form.label :image_3, class: "form-image", id: "image-rank-3" do
               %p.image-btn 画像を選択
               = form.file_field :image_3
-            #delete-rank-3 削除
 
         .form__check
           .form__check__background

@@ -53,7 +53,7 @@
               = image_tag ('default.png'), class: "icon__image"
         -if current_user
           = form_with model: [@rank, @comment], class: :bottom__comment__flex__form, local: true do |form|
-            = form.text_field :content, placeholder: "comment", class: "comment-input", rows: "2"
+            = form.text_field :content, placeholder: "comment (50文字まで)", class: "comment-input", rows: "2"
             = form.submit "コメントを投稿", class: "comment-send-btn"
         -else
           .comment-error-message 

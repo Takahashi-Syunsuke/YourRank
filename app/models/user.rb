@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :nickname, presence: true
+  validates :nickname, length: { minimum: 1, maximum: 10 }
+  validates :profile, length: { maximum: 60 }
 
   mount_uploader :image, ImageUploader
 

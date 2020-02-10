@@ -129,7 +129,7 @@ $(function(){
 $(function(){
   $('.field-icon-reset').click( function() {
     $(".preview").remove();
-    $('input[type=file]').val('')
+    $('input[type=file]').val('');
     return false;
   });
 });

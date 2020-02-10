@@ -3,4 +3,5 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @ranks = @user.ranks.order(id: "DESC")
   end
+  
 end

@@ -6,6 +6,7 @@
 }
 
 @import "reset";
+@import "config/colors";
 @import "header";
 @import "modules/ranks/index";
 @import "modules/ranks/show";
@@ -17,3 +18,4 @@
 @import "modules/tags/new";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/flash";

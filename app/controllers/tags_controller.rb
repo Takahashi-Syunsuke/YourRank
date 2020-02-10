@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :move_to_new_user_session_path, only: [:new, :create]
 
   def show
     @tag = Tag.find(params[:id])
@@ -18,4 +19,9 @@ class TagsController < ApplicationController
   def post_params
     params.require(:tag).permit(:name)
   end
+
+  def move_to_new_user_session_path
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+  
 end
