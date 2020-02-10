@@ -6,12 +6,12 @@
       = image_tag ('default.png'), class: "icon__img"
   .main__wrapper__name
     = link_to user_path(rank.user.id) do
-      = rank.user.nickname
+      = rank.user.nickname.truncate(15)
   .main__wrapper__profile
-    = rank.user.profile
+    = rank.user.profile.truncate(40)
   .main__wrapper__title
     = link_to rank_path(rank.id) do
-      = rank.title
+      = rank.title.truncate(15)
   .main__wrapper__like
     = icon('fas', 'heart')
     = Like.where(rank_id: rank).count

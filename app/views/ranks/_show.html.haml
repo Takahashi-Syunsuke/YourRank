@@ -43,18 +43,18 @@
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-1
-          = @rank.content_1
+          = @rank.content_1.truncate(180)
       .flex__right__content__wrapper{"data-rank" => "content-2"}
         = @rank.rank_2
         %a.content{"data-target" => "content-2"}
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-2
-          = @rank.content_2
+          = @rank.content_2.truncate(180)
       .flex__right__content__wrapper{"data-rank" => "content-3"}
         = @rank.rank_3
         %a.content{"data-target" => "content-3"}
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-3
-          = @rank.content_3
+          = @rank.content_3.truncate(180)

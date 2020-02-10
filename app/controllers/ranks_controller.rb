@@ -1,4 +1,6 @@
 class RanksController < ApplicationController
+  before_action :move_to_new_user_session_path, only: [ :new, :create, :edit, :update, :destroy]
+
   def index
     @ranks = Rank.all.order(id: "DESC")
   end
@@ -47,6 +49,10 @@ class RanksController < ApplicationController
   private
   def post_params
     params.require(:rank).permit(:title, :rank_1, :rank_2, :rank_3, :image_1, :image_2, :image_3, :content_1, :content_2, :content_3, tag_ids: []).merge(user_id: current_user.id)
+  end
+
+  def move_to_new_user_session_path
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end

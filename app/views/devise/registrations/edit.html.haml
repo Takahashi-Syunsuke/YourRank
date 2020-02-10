@@ -36,10 +36,10 @@
           .field
             .icon__wrapper
               .icon
+                - if @user.image.url 
+                  = image_tag @user.image.url, class: "user-edit-image"
               .field-label#icon
                 = f.label :image, class: "user-new-btn"
-              .field-icon-reset
-                Reset
               .field-input#btn
                 = f.file_field :image
           .field

@@ -77,8 +77,10 @@
     }
     &__profile {
       height: 55px;
+      width: 245px;
       font-size: 11px;
       word-break: keep-all;
+      word-wrap:break-word;
       margin-bottom: 5px;
       border-bottom: 1px solid lightslategray;
     }
