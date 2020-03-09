@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: YourRank_production
-  username: YourRank
-  password: <%= ENV['YOURRANK_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= Rails.application.credentials[:db][:password] %>
+  socket: /var/lib/mysql/mysql.sock
