@@ -22,4 +22,4 @@
       = link_to tag_path(rank.tag_ids), class: "icon-tag" do
         = tag.name
   .main__wrapper__img
-    = image_tag rank.image_1.url, class: "rank__img" if rank.image_1.url.present?
+    = image_tag("#{rank.image_1}", class: "rank__img") if rank.image_1.url.present?
