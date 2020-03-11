@@ -32,3 +32,5 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end
+
+# S3の本番設定ここから
