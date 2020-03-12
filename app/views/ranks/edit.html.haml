@@ -48,7 +48,7 @@
           .form__first__image-check
             .form__first__image-check__background#rank-1
               - if @rank.image_1.url 
-                = image_tag @rank.image_1.url, class: "preview-1", id: "edit-rank-image"
+                = image_tag asset_path("#{@rank.image_1}", class: "preview-1", id: "edit-rank-image")
           .form__first__image
             = form.label :image_1, class: "form-image", id: "image-rank-1" do
               %p.image-btn 画像の選択
@@ -60,7 +60,7 @@
           .form__second__image-check
             .form__second__image-check__background#rank-2
               - if @rank.image_2.url 
-                = image_tag @rank.image_2.url, class: "preview-2", id: "edit-rank-image"
+                = image_tag asset_path("#{@rank.image_2.url}", class: "preview-2", id: "edit-rank-image")
           .form__second__image
             = form.label :image_2, class: "form-image", id: "image-rank-2" do
               %p.image-btn 画像を選択
@@ -72,7 +72,7 @@
           .form__third__image-check
             .form__third__image-check__background#rank-3
               - if @rank.image_3.url 
-                = image_tag @rank.image_3.url, class: "preview-3", id: "edit-rank-image"
+                = image_tag asset_path("#{@rank.image_3.url}", class: "preview-3", id: "edit-rank-image")
           .form__third__image
             = form.label :image_3, class: "form-image", id: "image-rank-3" do
               %p.image-btn 画像を選択

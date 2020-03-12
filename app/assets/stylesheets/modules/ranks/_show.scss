@@ -158,7 +158,7 @@ i {
         height: 160px;
         line-height: 150px;
         position: relative;
-        .icon__img {
+        img {
           height: 100px;
           width: 100px;
           border-radius: 50%;
@@ -230,7 +230,7 @@ i {
       &__list--content-3 {
         @include rank-content-image;
         }  
-      .rank__img {
+      img {
         height: 150px;
         width: 150px;
         object-fit: contain;
@@ -313,7 +313,7 @@ i {
         min-width: 75px;
         margin: 12.5px 10px 0px 0px;
       }
-      .icon__image {
+      img {
         height: 75px;
         width: 75px;
         border-radius: 50%;
@@ -370,7 +370,7 @@ i {
         min-width: 75px;
         margin-right: 10px;
       }
-      .comment__image {
+      img {
         height: 75px;
         width: 75px;
         border-radius: 50%;

@@ -64,10 +64,10 @@
           .bottom__comment__content__icon
             - if comment.user.image.url.present?  
               = link_to user_path(comment.user) do
-                = image_tag comment.user.image.url, class: "comment__image"
+                = image_tag asset_path("#{comment.user.image}", class: "comment__image")
             - else
               = link_to user_path(comment.user) do
-                = image_tag ('default.png'), class: "comment__image"
+                = image_tag asset_path('default.png'), class: "comment__image"
           .bottom__comment__content__wrapper
             .bottom__comment__content__wrapper__name
               = comment.user.nickname

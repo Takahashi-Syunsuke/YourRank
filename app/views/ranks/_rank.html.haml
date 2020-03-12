@@ -1,7 +1,7 @@
 .main__wrapper
   .main__wrapper__icon
     - if rank.user.image.url.present?
-      = image_tag("#{rank.user.image}", class: "icon__img")
+      = image_tag asset_path("#{rank.user.image}", class: "icon__img")
     - else
       = image_tag ('default.png'), class: "icon__img"
   .main__wrapper__name
@@ -22,4 +22,4 @@
       = link_to tag_path(rank.tag_ids), class: "icon-tag" do
         = tag.name
   .main__wrapper__img
-    = image_tag("#{rank.image_1}", class: "rank__img") if rank.image_1.url.present?
+    = image_tag asset_path("#{rank.image_1}", class: "rank__img") if rank.image_1.url.present?

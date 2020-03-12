@@ -62,7 +62,7 @@
       text-align: center;
       line-height: 120px;
       position: relative;
-      .icon__img {
+      img {
         height: 100px;
         width: 100px;
         border-radius: 50%;
@@ -107,7 +107,7 @@
     &__img {
       height: 200px;
       padding: 10px;
-      .rank__img {
+      img {
         height: 180px;
         width: 180px;
         object-fit: contain;

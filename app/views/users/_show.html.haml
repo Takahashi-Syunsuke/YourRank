@@ -1,7 +1,7 @@
 -@ranks.each do |rank|
   .flex__show__wrapper
     .flex__show__wrapper__img
-      = image_tag rank.image_1.url, class: "flex__show__wrapper__img__background" if rank.image_1.url.present?
+      = image_tag asset_path("#{rank.image_1.url}", class: "flex__show__wrapper__img__background") if rank.image_1.url.present?
     .flex__show__wrapper__right
       .flex__show__wrapper__right__wrapper
         .flex__show__wrapper__right__wrapper__title
