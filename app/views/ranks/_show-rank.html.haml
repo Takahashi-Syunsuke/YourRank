@@ -9,7 +9,7 @@
     .flex__left__wrapper
       .flex__left__wrapper__icon
         - if @rank.user.image.url.present?  
-          = image_tag asset_path("#{@rank.user.image}", class: "icon__img" )
+          = image_tag asset_path("#{@rank.user.image}")
         - else
           = image_tag ('default.png'), class: "icon__img"
       .flex__left__wrapper__name 
@@ -23,37 +23,37 @@
 
   .flex__right
     .flex__right__rank
-      .flex__right__rank__list--content-1
-        .flex__right__rank__list--content-1--img
-      .flex__right__rank__list--content-2
-        .flex__right__rank__list--content-2--img
-      .flex__right__rank__list--content-3
-        .flex__right__rank__list--content-3--img
+      .flex__right__rank__list#rank-content-1
+        .flex__right__rank__list__img
+      .flex__right__rank__list#rank-content-2
+        .flex__right__rank__list__img-2
+      .flex__right__rank__list#rank-content-3
+        .flex__right__rank__list__img-3
     .flex__right__img
-      .flex__right__img__list--content-1
-        = image_tag asset_path("#{@rank.image_1}", class: "rank__img") if @rank.image_1.url.present?
-      .flex__right__img__list--content-2
-        = image_tag asset_path("#{@rank.image_2.url}", class: "rank__img") if @rank.image_2.url.present?
-      .flex__right__img__list--content-3
-        = image_tag asset_path("#{@rank.image_3.url}", class: "rank__img") if @rank.image_3.url.present?
+      .flex__right__img__list#img-content-1
+        = image_tag asset_path("#{@rank.image_1}") if @rank.image_1.url.present?
+      .flex__right__img__list#img-content-2
+        = image_tag asset_path("#{@rank.image_2}") if @rank.image_2.url.present?
+      .flex__right__img__list#img-content-3
+        = image_tag asset_path("#{@rank.image_3}") if @rank.image_3.url.present?
     .flex__right__content
-      .flex__right__content__wrapper{"data-rank" => "content-1"}
+      .flex__right__content__wrapper
         = @rank.rank_1
-        %a.content{"data-target" => "content-1"}
+        %a.content{data:{target:"content-1"}}
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-1
           = @rank.content_1.truncate(180)
-      .flex__right__content__wrapper{"data-rank" => "content-2"}
+      .flex__right__content__wrapper
         = @rank.rank_2
-        %a.content{"data-target" => "content-2"}
+        %a.content{data:{target:"content-2"}}
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-2
           = @rank.content_2.truncate(180)
-      .flex__right__content__wrapper{"data-rank" => "content-3"}
+      .flex__right__content__wrapper
         = @rank.rank_3
-        %a.content{"data-target" => "content-3"}
+        %a.content{data:{target:"content-3"}}
           = icon('fas', 'chevron-down')
       .flex__right__content__wrapper__list
         #content-3
