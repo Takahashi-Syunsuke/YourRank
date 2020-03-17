@@ -33,43 +33,7 @@
         .title__right__btn
           = link_to rank_path(@rank), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "main__title__edit__btn" do
             %p 削除
+            
+  = render "show-rank"
+  = render "show-comment"
 
-  = render 'show'
-
-  .bottom
-    .bottom__flex
-      .flex__left
-        .flex__left__title
-          %p おすすめサイト
-      .bottom__promotion
-    .bottom__comment
-      .bottom__comment__title
-      .bottom__comment__flex
-        .bottom__comment__flex__img
-          -if user_signed_in?
-            - if current_user.image.url.present?  
-              = image_tag current_user.image.url, class: "icon__image"
-            - else
-              = image_tag ('default.png'), class: "icon__image"
-        -if current_user
-          = form_with model: [@rank, @comment], class: :bottom__comment__flex__form, local: true do |form|
-            = form.text_field :content, placeholder: "comment (50文字まで)", class: "comment-input", rows: "2"
-            = form.submit "コメントを投稿", class: "comment-send-btn"
-        -else
-          .comment-error-message 
-            %p ※コメントの投稿にはログインが必要です
-
-      -@comments.each do |comment|
-        .bottom__comment__content
-          .bottom__comment__content__icon
-            - if comment.user.image.url.present?  
-              = link_to user_path(comment.user) do
-                = image_tag asset_path("#{comment.user.image}", class: "comment__image")
-            - else
-              = link_to user_path(comment.user) do
-                = image_tag asset_path('default.png'), class: "comment__image"
-          .bottom__comment__content__wrapper
-            .bottom__comment__content__wrapper__name
-              = comment.user.nickname
-            .bottom__comment__content__wrapper__text
-              = comment.content

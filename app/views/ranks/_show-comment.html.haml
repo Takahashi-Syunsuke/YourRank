@@ -1,0 +1,37 @@
+.bottom
+  .bottom__flex
+    .flex__left
+      .flex__left__title
+        %p おすすめサイト
+    .bottom__promotion
+  .bottom__comment
+    .bottom__comment__title
+    .bottom__comment__flex
+      .bottom__comment__flex__img
+        -if user_signed_in?
+          - if current_user.image.url.present?  
+            = image_tag current_user.image.url
+          - else
+            = image_tag ('default.png')
+      -if current_user
+        = form_with model: [@rank, @comment], class: :bottom__comment__flex__form, local: true do |form|
+          = form.text_field :content, placeholder: "comment (50文字まで)", class: "comment-input", rows: "2"
+          = form.submit "コメントを投稿", class: "comment-send-btn"
+      -else
+        .comment-error-message 
+          %p ※コメントの投稿にはログインが必要です
+
+    -@comments.each do |comment|
+      .bottom__comment__content
+        .bottom__comment__content__icon
+          - if comment.user.image.url.present?  
+            = link_to user_path(comment.user) do
+              = image_tag asset_path("#{comment.user.image}")
+          - else
+            = link_to user_path(comment.user) do
+              = image_tag asset_path('default.png')
+        .bottom__comment__content__wrapper
+          .bottom__comment__content__wrapper__name
+            = comment.user.nickname
+          .bottom__comment__content__wrapper__text
+            = comment.content

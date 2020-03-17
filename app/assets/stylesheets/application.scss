@@ -5,17 +5,19 @@
   text-decoration: none;
 }
 
+a { color: #000; }
+
 @import "reset";
-@import "config/colors";
 @import "header";
-@import "modules/ranks/index";
-@import "modules/ranks/show";
-@import "modules/ranks/new";
-@import "modules/registrations/new";
-@import "modules/registrations/edit";
-@import "modules/sessions/new";
-@import "modules/users/show";
-@import "modules/tags/new";
+@import "ranks/index";
+@import "ranks/show";
+@import "ranks/new";
+@import "registrations/new";
+@import "registrations/edit";
+@import "sessions/new";
+@import "users/show";
+@import "tags/new";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "modules/flash";
+@import "flash";
+@import "mixin";
