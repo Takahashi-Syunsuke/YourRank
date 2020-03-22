@@ -18,18 +18,25 @@ class RanksController < ApplicationController
   end
 
   def create
-    @rank = Rank.create(post_params)
-    redirect_to root_path
+    @rank = Rank.new(post_params)
+    if @rank.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
-
+  
   def edit
     @rank = Rank.find(params[:id])
   end
 
   def update
-    rank = Rank.find(params[:id])
-    rank.update(post_params)
-    redirect_to rank_path(params[:id])
+    @rank = Rank.find(params[:id])
+    if @rank.update(post_params)
+      redirect_to rank_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   def destroy

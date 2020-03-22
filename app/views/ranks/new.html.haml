@@ -1,85 +1,60 @@
 .main
   .main__content
-    .main__content__map
-      .main__content__map__title
-        %p STEP1
-      .main__content__map__content#step1
-        %p STEP2     
-      .main__content__map__content#step2
-        %p STEP3
-      .main__content__map__content#step3
-        %p STEP4
-      .main__content__map__tag
-        %p STEP5
-    .main__content__label
-      .main__content__label__title
-        %p ※必須:タイトル(25文字まで)
-      .main__content__label__rank#label-1
-        %p ※必須:１位(30文字まで)
-      .main__content__label__content#label-1
-        %p.gray-text 任意:概要(240文字まで)
-      .main__content__label__image#label-1
-        %p.gray-text 任意:画像(1枚まで)
-      .main__content__label__rank#label-2
-        %p ※必須:２位(30文字まで)
-      .main__content__label__content#label-2
-        %p.gray-text 任意:概要(240文字まで)
-      .main__content__label__image#label-2
-        %p.gray-text 任意:画像(1枚まで)
-      .main__content__label__rank#label-3
-        %p ※必須:３位(30文字まで)
-      .main__content__label__content#label-3
-        %p.gray-text 任意:概要(240文字まで)
-      .main__content__label__image#label-3
-        %p.gray-text 任意:画像(1枚まで)
-      .main__content__label__tag
-        %p.gray-text#tag 任意:タグ(3つまで)
-        = link_to new_tag_path, id: "tag-link" do
-          タグの作成
-        %br 画面遷移し、内容が失われます
-        　　 編集画面でも追加出来ます
-    .main__content__new
-      = form_with model: @rank, class: :form, local: true do |form|
-        %p.form__message ランキングの作成
-        .form__title 
-          = form.text_field :title, placeholder: "ランキングのタイトル", class: "form__title"
-        .form__first
-          = form.text_field :rank_1, placeholder: "あなたにとっての１位", class: "form__rank"
-          = form.text_area :content_1, placeholder: "概要の記入", class: "form__content"
-          .form__first__image-check
-            .form__first__image-check__background#rank-1
-          .form__first__image
-            = form.label :image_1, class: "form-image", id: "image-rank-1" do
-              %p.image-btn 画像の選択
-              = form.file_field :image_1
-            #delete-rank-1 削除
+    = form_with model: @rank, class: :form, local: true do |f|
 
-        .form__second
-          = form.text_field :rank_2, placeholder: "あなたにとっての2位", class: "form__rank"
-          = form.text_area :content_2, placeholder: "概要の記入", class: "form__content"
-          .form__second__image-check
-            .form__second__image-check__background#rank-2
-          .form__second__image
-            = form.label :image_2, class: "form-image", id: "image-rank-2" do
-              %p.image-btn 画像を選択
-              = form.file_field :image_2
-            #delete-rank-2 削除
+      .form__message ランキングの作成
+      %p#index-title タイトル (25文字まで)
+      = f.text_field :title, placeholder: "タイトルを入力", class: "form__title"
+      .form__border
+      %p#index-rank １位 (30文字まで)
+      = f.text_field :rank_1, placeholder: "１位を入力", class: "form__rank", data: {rank: "1"}
+      %p#index-detail 概要 (240文字まで)
+      = f.text_area :content_1, placeholder: "概要を入力", class: "form__content"
+      .form__border
+      %p#index-rank ２位 (30文字まで)
+      = f.text_field :rank_2, placeholder: "2位を入力", class: "form__rank", data: {rank: "2"}
+      %p#index-detail 概要 (240文字まで)
+      = f.text_area :content_2, placeholder: "概要を入力", class: "form__content"
+      .form__border
+      %p#index-rank ３位 (30文字まで)
+      = f.text_field :rank_3, placeholder: "3位を入力", class: "form__rank", data: {rank: "3"}
+      %p#index-detail 概要 (240文字まで)
+      = f.text_area :content_3, placeholder: "概要を入力", class: "form__content"
+      .form__border
 
-        .form__third
-          = form.text_field :rank_3, placeholder: "あなたにとっての3位", class: "form__rank"
-          = form.text_area :content_3, placeholder: "概要の記入", class: "form__content"
-          .form__third__image-check
-            .form__third__image-check__background#rank-3
-          .form__third__image
-            = form.label :image_3, class: "form-image", id: "image-rank-3" do
-              %p.image-btn 画像を選択
-              = form.file_field :image_3
-            #delete-rank-3 削除
+      .form__image
+        .form__image__wrapper{data:{index: "1"}}
+          %p#index-image-1 画像
+          = f.label :image_1, for: "rank-image-1", class: "form__image__wrapper__zone-1" do
+            = f.file_field :image_1, id: "rank-image-1"
+            %p.hidden-1 1位に関する画像を投稿
+            %i.fa.fa-camera-retro.hidden-1
+          .form__image__wrapper__btn
+            #delete-1 削除
 
-        .form__check
-          .form__check__background
-            .form__check__background__inner
-              = form.collection_check_boxes :tag_ids, Tag.all, :id, :name
-        .form__btn
-          = form.submit "投稿", class: "create__btn"
+        .form__image__wrapper{data:{index: "2"}}
+          %p#index-image-2 画像
+          = f.label :image_2, for: "rank-image-2", class: "form__image__wrapper__zone-2" do
+            = f.file_field :image_2, id: "rank-image-2"
+            %p.hidden-2 2位に関する画像を投稿
+            %i.fa.fa-camera-retro.hidden-2
+          .form__image__wrapper__btn
+            #delete-2 削除
+
+        .form__image__wrapper{data:{index: "3"}}
+          %p#index-image-3 画像
+          = f.label :image_3, for: "rank-image-3", class: "form__image__wrapper__zone-3" do
+            = f.file_field :image_3, id: "rank-image-3"
+            %p.hidden-3 3位に関する画像を投稿
+            %i.fa.fa-camera-retro.hidden-3
+          .form__image__wrapper__btn
+            #delete-3 削除
+      .form__border
+
+      %p#index-tag タグ（1つまで）
+      .form__tag
+        .form__tag__wrapper
+          = f.collection_check_boxes :tag_ids, Tag.all, :id, :name
+      .form__btn
+        = f.submit "ランキングを投稿", class: "create__btn"
 
