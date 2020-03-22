@@ -1,0 +1,51 @@
+@import "mixin";
+
+.form__edit {
+  display: flex;
+  &__wrapper {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    // 画像がない時の記述
+    #rank-image-1, #rank-image-2, #rank-image-3 { display: none; }
+    &__zone-1, &__zone-2, &__zone-3 {
+      @include image-zone;
+      cursor: pointer;
+      line-height: 180px;
+      position: relative;
+      i {
+        width: 20px;
+        position: absolute;
+        left: 50%;
+        top: 60%;
+      }
+      .preview-1, .preview-2, .preview-3 {
+        @include image-size;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    }
+    // 画像がある時の記述
+    &__preview-1, &__preview-2, &__preview-3 {
+      @include image-zone;
+      #change-image-1, #change-image-2, #change-image-3 { display: none; }
+      .edit-image-1, .edit-image-2, .edit-image-3 { @include image-size; }
+      .change-btn { @include image-btn; }
+      .change-btn:hover { @include image-btn-hover; }
+    }
+    // 動的に追加された変更ボタンの記述
+    &__btn-1, &__btn-2, &__btn-3 {
+      display: none;
+      padding: 0 2.5px;
+      #delete-1, #delete-2, #delete-3 { @include image-btn; }
+      #delete-1:hover, #delete-2:hover, #delete-3:hover { @include image-btn-hover; }
+    }
+  }
+}
+
+.form__border-image {
+  width: 655px;
+  margin: 90px 100px 0;
+  border-bottom: 1px solid #ccc;
+}

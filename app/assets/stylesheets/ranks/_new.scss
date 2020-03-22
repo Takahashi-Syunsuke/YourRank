@@ -1,430 +1,137 @@
-@mixin form-figure {
-  height: 375px;
-  background-color: lightslategrey;
-  display: flex;
-  flex-flow: column;
-  text-align: center;
-  margin-bottom: 20px; 
-  border-radius: 5px 5px 5px 5px;
-}
-@mixin input-image {
-  height: 30px;
-  width: 200px;
-  background-color: #00BFFF;
-  border: 2px solid #00BFFF;
-  color: white;
-  font-size: 11px;
-  margin: 3px;
-  border-radius: 5px 5px 5px 5px;
-  line-height: 26px;
-  cursor: pointer;
-}
+@import "mixin";
 
-.main {
-  &__content {
-    width: 100%;
+.main__content {
+  @include arg($width: 935px, $back: #fff);
+  padding: 40px ;
+  margin: 0 auto 30px;
+  .form {
     display: flex;
-    margin: auto;
-    padding-right: 20px;
-    &__map {
-      height: 1495px;
-      width: 100px;
-      margin-right: 30px;
-      color: white;
+    flex-flow: column;
+    input { @include input-design; }
+    textarea {
+      @include input-design;
+      padding: 20px 10px;
+    }
+    &__message {
+      @include arg($width: 655px, $height: 60px);
+      margin: 0 100px; 
+      font-size: 20px;
+      color: $darkgray;
       text-align: center;
-      &__title {
-        height: 90px;
-        background-color: #ffb6c1;
-        margin-bottom: 20px;
-        line-height: 90px;
-        position: relative;
-      }
-      &__title::after {
-        content: "";
-        border-top: 40px solid #ffb6c1;
-        border-right: 50px solid transparent;
-        border-left: 50px solid transparent; 
-        position: absolute;
-        top: 90px;
-        left: 0px;
-        z-index: 2;
-      }
-      &__content {
-        height: 375px;
-        background-color: white;
-        margin-bottom: 20px;
-        line-height: 375px;
-        position: relative;
-      }
-      &__content::after {
-        content: "";
-        border-top: 40px solid white;
-        border-right: 50px solid transparent;
-        border-left: 50px solid transparent; 
-        position: absolute;
-        top: 375px;
-        left: 0px;
-        z-index: 2;
-      }
-      #step1 {
-        background-color: #dda0dd;
-      }
-      #step1::after {
-        border-top: 40px solid #dda0dd;
-      }
-      #step2 {
-        background-color: #6495ed;
-      }
-      #step2::after {
-        border-top: 40px solid #6495ed;
-      }
-      #step3 {
-        background-color: #00bfff;
-      }
-      #step3::after {
-        border-top: 40px solid #00bfff;
-      }
-      &__tag {
-        height: 200px;
-        background-color: #40e0d0;
-        line-height: 200px;
-        position: relative;
-      }
-      &__tag::after {
-        content: "";
-        border-top: 40px solid #40e0d0;
-        border-right: 50px solid transparent;
-        border-left: 50px solid transparent; 
-        position: absolute;
-        top: 200px;
-        left: 0px;
+      line-height: 60px;
+      border-bottom: 1px solid #ccc;
+    }
+    &__title, &__rank {
+      @include arg($height: 60px, $back: #fff);
+      margin-bottom: 30px;
+    }
+    &__content {
+      @include arg($height: 120px, $back: #fff);
+      margin-bottom: 30px;
+    }
+    &__image {
+      display: flex;
+      &__wrapper {
+        display: flex;
+        flex-flow: column;
+        #rank-image-1, #rank-image-2, #rank-image-3 { display: none; }
+        &__zone-1, &__zone-2, &__zone-3 {
+          @include image-zone;
+          margin: 0 2.5px;
+          cursor: pointer;
+          line-height: 180px;
+          position: relative;
+          i {
+            width: 20px;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+          }
+          .preview-1, .preview-2, .preview-3 {
+            @include image-size;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+          }
+        }
+        &__btn {
+          margin-bottom: 30px;
+          #delete-1, #delete-2, #delete-3 {
+            @include image-btn;
+            margin: 10px 2.5px;
+          }
+          #delete-1:hover, #delete-2:hover, #delete-3:hover { @include image-btn-hover; }
+        }
       }
     }
-    &__label {
-      height: 1495px;
-      width: calc(100% - 1090px);
-      min-width: 230px;
-      margin-right: 30px;
+    &__tag {
+      @include arg($width: 855px, $height: 190px, $back: #fff);
+      margin: 0 0 90px;
+      border: 1px solid $gray;
+      border-radius: 3px;
+      &__wrapper {
+        padding: 5px;
+        word-break: keep-all;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+        input { display: none; }
+        input + label { @include tag-label; }
+        input:checked + label {
+          @include tag-label;
+          background-color: #fff;
+          border: 2px solid $lightgreen;
+          color: dimgray;
+          margin-right: 3px;
+        }
+      }
+    }
+    .create__btn {
+      @include arg($width: 50%, $height: 60px, $back: $skyblue);
+      margin: 0 25% 10px;
+      box-shadow: 0px 5px 3px #aaa;
+      border: none;
+      border-bottom: solid 4px #6495ed;
       color: white;
-      font-size: 13px;
-      text-align: right;
-      .gray-text {
-        color: dimgray;
-      }
-      &__title {
-        height: 40px;
-        padding: 5px 20px 5px 20px;
-        margin: 50px 0px 20px 0px;
-        background-color: #ffb6c1;
-        line-height: 30px;
-        }
-      &__rank {
-        height: 40px;
-        padding: 5px 20px 5px 20px;
-        margin: 0px 0px 5px 0px;
-        background-color: white;
-        line-height: 30px;
-      }
-      &__content {
-        height: 90px;
-        padding: 5px 20px 5px 20px;
-        margin: 0px 0px 5px 0px;
-        background-color: white;
-        line-height: 80px;
-      }
-      &__image {
-        height: 195px;
-        padding: 5px 20px 5px 20px;
-        margin: 0px 0px 60px 0px;
-        background-color: white;
-        line-height: 185px;
-      }
-      &__tag {
-        height: 195px;  
-        padding: 5px 20px 5px 20px;
-        background-color: #40e0d0;
-        align-items: center;
-      }
-      #label-1 {
-        background-color: #dda0dd;
-      }
-      #label-2 {
-        background-color: #6495ed;
-      }
-      #label-3 {
-        background-color: #00bfff;
-      }
-      #tag {
-        margin-top: 55px;
-      }
-      #tag-link {
-        height: 20px;
-        width: 100px;
-        background-color: #00BFFF;
-        color: white;
-        display: inline-block;
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        margin: 5px 0px 3px 0px;
-        cursor: pointer;
-      }
+      font-size: 20px;
+      cursor: pointer;
     }
-    &__new {
-      width: 810px;
-      margin-bottom: 10px;
-      .form {
-        width: 100%;
-        display: flex;
-        flex-flow: column;
-        font-size: 14px;
-        input {
-          width: 800px;
-          border: none;
-          padding: 0px 10px;
-          color: dimgray;
-        }
-        textarea {
-          width: 800px;
-          border: none;
-          padding: 10px;
-          color: dimgray;
-        }
-      &__message {
-        height: 30px;
-        background-color: lightslategrey;
-        color: white;
-        font-size: 20px;
-        margin-bottom: 20px; 
-        text-align: center;
-      }
-      &__title {
-        height: 40px;
-        background-color: lightslategrey;
-        display: flex;
-        flex-flow: column;
-        margin-bottom: 20px;
-        border-radius: 5px 5px 5px 5px;
-        input {
-          height: 30px;
-          margin: 5px; 
-          background-color: white;
-        }
-      }
-      &__first {
-        @include form-figure;
-        &__image-check {
-          height: 200px;
-          background-color: white;
-          margin: 5px 5px 0px 5px; 
-          position: relative;
-          &__background {
-            height: 190px;
-            width: 190px;
-            margin: 5px;
-            position: absolute;
-            left: 305px;
-            border-left: 1px solid lightgrey; 
-            border-right: 1px solid lightgrey; 
-          }
-          img {
-            height: 188px;
-            width: 188px;
-            object-fit: contain;
-          }
-        }
-        input {
-          height: 30px;
-          background-color: white;
-          margin: 5px 5px 0px 5px;
-        }
-        textarea {
-          height: 90px;
-          margin: 5px 5px 0px 5px; 
-          background-color: white;
-        }
-        &__image {
-          display: flex;
-          margin: auto;
-          input {
-            display: none;
-          }
-          .image-btn {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-          #delete-rank-1 {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-        }
-      }
-      &__second {
-        @include form-figure;
-        &__image-check {
-          height: 200px;
-          background-color: white;
-          margin: 5px 5px 0px 5px; 
-          position: relative;
-          &__background {
-            height: 190px;
-            width: 190px;
-            margin: 5px;
-            position: absolute;
-            left: 305px;
-            border-left: 1px solid lightgrey; 
-            border-right: 1px solid lightgrey; 
-          }
-          img {
-            height: 188px;
-            width: 188px;
-            object-fit: contain;
-          }
-        }
-        input {
-          height: 30px;
-          background-color: white;
-          margin: 5px 5px 0px 5px; 
-        }
-        textarea {
-          height: 90px;
-          margin: 5px 5px 0px 5px; 
-          background-color: white;
-        }
-        &__image {
-          display: flex;
-          margin: auto;
-          input {
-            display: none;
-          }
-          .image-btn {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-          #delete-rank-2 {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-        }
-      }
-      &__third {
-        @include form-figure;
-        &__image-check {
-          height: 200px;
-          background-color: white;
-          margin: 5px 5px 0px 5px; 
-          position: relative;
-          &__background {
-            height: 190px;
-            width: 190px;
-            margin: 5px;
-            position: absolute;
-            left: 305px;
-            border-left: 1px solid lightgrey; 
-            border-right: 1px solid lightgrey; 
-          }
-          img {
-            height: 188px;
-            width: 188px;
-            object-fit: contain;
-          }
-        }
-        input {
-          height: 30px;
-          background-color: white;
-          margin: 5px 5px 0px 5px; 
-        }
-        textarea {
-          height: 90px;
-          margin: 5px 5px 0px 5px; 
-          background-color: white;
-        }
-        &__image {
-          display: flex;
-          margin: auto;
-          input {
-            display: none;
-          }
-          .image-btn {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-          #delete-rank-3 {
-            @include input-image;
-            width: 120px;
-            margin: 5px 5px 5px 5px; 
-          }
-        }
-      }
-      &__check {
-        height: 200px;
-        background-color: lightslategray;
-        display: flex;
-        margin-bottom: 20px;
-        border-radius: 5px 5px 5px 5px;
-        &__background {
-          height: 190px;
-          width: 800px;
-          background-color: white;
-          margin: 5px;
-          &__inner {
-            max-height: 200px;
-            padding: 5px;
-            background-color: white;
-            word-break: keep-all;
-            display: flex;
-            flex-wrap: wrap;
-            overflow: scroll;
-            input {
-              display: none;
-            }
-            input + label {
-              height: 30px;
-              background-color: turquoise;
-              border: 2px solid turquoise;
-              color: white;
-              font-size: 11px;
-              margin: 0px 3px 3px 0px;
-              padding: 0px 3px;
-              border-radius: 5px 5px 5px 5px;
-              line-height: 24px;
-              cursor: pointer;
-            }
-            }
-            input:checked + label {
-              height: 30px;
-              background-color: white;
-              border: 2px solid turquoise;
-              color: dimgray;
-              margin-right: 3px;
-              padding: 0px 3px;
-              border-radius: 5px 5px 5px 5px;
-              line-height: 24px;
-              cursor: pointer;
-            }
-          }
-        }
-      }
-      .create__btn {
-        height: 50px;
-        background-color: #00BFFF;
-        border: 2px solid #00BFFF;
-        border-radius: 30px 30px 30px 30px;
-        cursor: pointer;
-      }
-      input.create__btn {
-        color: white;
-      }
+    .create__btn:active {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      border-bottom: none;
     }
   }
 }
 
-#edit-rank-image {
-  height: 188px;
-  width: 188px;
-  object-fit: contain;
+#index-title, #index-rank, #index-detail { @include index-blueprint; }
+#index-image-1, #index-image-2, #index-image-3, #index-tag { @include index-blueprint; padding: 0; }
+#index-title::before, #index-rank::before { @include index-attention; }
+#index-detail::before, #index-tag::before, #index-image-1::before, #index-image-2::before, #index-image-3::before {
+  @include index-attention;
+  content: "任意";
+  background-color: $skyblue;
+}
+.form__border {
+  width: 655px;
+  margin: 60px 100px 0;
+  border-bottom: 1px solid #ccc;
+}
+.form__title::placeholder, .form__rank::placeholder, .form__content::placeholder, .hidden-1, .hidden-2, .hidden-3 {
+  color: $gray;
+  font-size: 16px;
+  font-weight: normal;
+}
+.reset-tag {
+  @include arg($width: 200px, $height: 30px, $back: $darkgray);
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  margin: 5px;
+  cursor: pointer;
+}
+#delete-check {
+  width: 16px;
+  margin: 0;
 }

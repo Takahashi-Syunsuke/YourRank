@@ -2,7 +2,9 @@
 $gray: lightslategray;
 $darkgray: #444;
 $red: red;
-$lightgreen: turquoise;
+$lightgreen: #40e0d0;
+$blue: #6495ed;
+$skyblue: #00bfff;
 
 // 引数定義
 @mixin arg($width: "", $height: "", $back: "") {
@@ -11,7 +13,7 @@ $lightgreen: turquoise;
   background-color: $back;
 }
 
-// _show.scssのmixin
+// ranks_show.scssのmixin
 @mixin rank-content-left-image {
   @include arg($width: 55px, $height: 40px);
   background-image: url("/assets/1.png");
@@ -35,4 +37,67 @@ $lightgreen: turquoise;
   padding: 0px 10px;
   font-size: 12px;
   line-height: 50px;
+}
+
+// ranks_new.scssのmixin
+@mixin input-design {
+  width: 655px;
+  padding: 0 10px;
+  margin: 0 100px;
+  color: $darkgray;
+  border: 1px solid $gray;
+  border-radius: 3px;
+}
+@mixin image-zone {
+  @include arg($width: 280px, $height: 210px, $back: #fff);
+  display: block;
+  margin: 0 2.5px 5px;
+  border: 2px dotted $gray;
+  color: gray;
+  text-align: center;
+}
+@mixin image-size {
+  @include arg($width: 276px, $height: 206px);
+  object-fit: contain;
+}
+@mixin image-btn {
+  @include arg($width: 280px, $height: 30px, $back: $darkgray);
+  display: inline-block;
+  margin: 10px 0 0;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+@mixin image-btn-hover {
+  background-color: #fff;
+  color: $darkgray;
+  border: 2px solid $darkgray;
+}
+@mixin tag-label {
+  height: 30px;
+  background-color: $lightgreen;
+  border: 2px solid $lightgreen;
+  color: #fff;
+  font-size: 11px;
+  margin: 0 3px 3px 0;
+  padding: 0 3px;
+  border-radius: 5px;
+  line-height: 24px;
+  cursor: pointer;
+}
+@mixin index-blueprint {
+  padding: 0 100px;
+  margin:60px 0 10px;
+  font-size: 14px;
+  color: $darkgray;
+}
+@mixin index-attention {
+  @include arg($width: 40px, $height: 20px, $back: $red);
+  content: "必須";
+  display: inline-block;
+  margin-right: 5px;
+  color: #fff;
+  border-radius: 3px;
+  text-align: center;
 }
