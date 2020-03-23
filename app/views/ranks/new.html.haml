@@ -5,19 +5,36 @@
       .form__message ランキングの作成
       %p#index-title タイトル (25文字まで)
       = f.text_field :title, placeholder: "タイトルを入力", class: "form__title"
+      -# エラーに関する記述 application_helper.rb でメソッドを定義
+      .form__error-0{data: {error: "input#rank_title"}}
+        - show_errors(@rank, :title).each do |error|
+          %p.error-message-0
+            = error
       .form__border
       %p#index-rank １位 (30文字まで)
       = f.text_field :rank_1, placeholder: "１位を入力", class: "form__rank", data: {rank: "1"}
+      .form__error-1{data: {error: "input#rank_rank_1"}}
+        - show_errors(@rank, :rank_1).each do |error|
+          %p.error-message-1
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_1, placeholder: "概要を入力", class: "form__content"
       .form__border
       %p#index-rank ２位 (30文字まで)
       = f.text_field :rank_2, placeholder: "2位を入力", class: "form__rank", data: {rank: "2"}
+      .form__error-2{data: {error: "input#rank_rank_2"}}
+        - show_errors(@rank, :rank_2).each do |error|
+          %p.error-message-2
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_2, placeholder: "概要を入力", class: "form__content"
       .form__border
       %p#index-rank ３位 (30文字まで)
       = f.text_field :rank_3, placeholder: "3位を入力", class: "form__rank", data: {rank: "3"}
+      .form__error-3{data: {error: "input#rank_rank_3"}}
+        - show_errors(@rank, :rank_3).each do |error|
+          %p.error-message-3
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_3, placeholder: "概要を入力", class: "form__content"
       .form__border
@@ -51,7 +68,7 @@
             #delete-3 削除
       .form__border
 
-      %p#index-tag タグ（1つまで）
+      %p#index-tag タグ（3つまで）
       .form__tag
         .form__tag__wrapper
           = f.collection_check_boxes :tag_ids, Tag.all, :id, :name

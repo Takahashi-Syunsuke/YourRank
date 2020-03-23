@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      post 'delete_image_1'
+      post 'delete_image_2'
+      post 'delete_image_3'
+    end
   end
   resources :tags, only: [:show, :new, :create]
 end

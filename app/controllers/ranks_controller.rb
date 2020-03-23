@@ -39,6 +39,27 @@ class RanksController < ApplicationController
     end
   end
 
+  def delete_image_1
+    @rank = Rank.find(params[:id])
+    @rank.remove_image_1!
+    @rank.save
+    render :edit
+  end
+  
+  def delete_image_2
+    @rank = Rank.find(params[:id])
+    @rank.remove_image_2!
+    @rank.save
+    render :edit
+  end
+  
+  def delete_image_3
+    @rank = Rank.find(params[:id])
+    @rank.remove_image_3!
+    @rank.save
+    render :edit
+  end
+
   def destroy
     rank =  Rank.find(params[:id])
     rank.destroy

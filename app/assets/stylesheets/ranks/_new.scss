@@ -105,7 +105,14 @@
 }
 
 #index-title, #index-rank, #index-detail { @include index-blueprint; }
-#index-image-1, #index-image-2, #index-image-3, #index-tag { @include index-blueprint; padding: 0; }
+#index-image-1, #index-image-2, #index-image-3, #index-tag {
+  @include index-blueprint;
+  width: 280px;
+  padding: 0;
+  // 以下、末尾に"..."を付加してて文字列を省略表示
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
 #index-title::before, #index-rank::before { @include index-attention; }
 #index-detail::before, #index-tag::before, #index-image-1::before, #index-image-2::before, #index-image-3::before {
   @include index-attention;
@@ -134,4 +141,9 @@
 #delete-check {
   width: 16px;
   margin: 0;
+}
+.form__error-0, .form__error-1, .form__error-2, .form__error-3 {
+  margin: 5px 0 0 100px;
+  color: $red;
+  font-size: 12px;
 }

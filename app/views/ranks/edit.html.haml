@@ -5,81 +5,112 @@
       .form__message ランキングの作成
       %p#index-title タイトル (25文字まで)
       = f.text_field :title, placeholder: "タイトルを入力", class: "form__title"
+      .form__error-0{data: {error: "input#rank_title"}}
+        - show_errors(@rank, :title).each do |error|
+          %p.error-message-0
+            = error
       .form__border
       %p#index-rank １位 (30文字まで)
       = f.text_field :rank_1, placeholder: "１位を入力", class: "form__rank", data: {rank: "1"}
+      .form__error-1{data: {error: "input#rank_rank_1"}}
+        - show_errors(@rank, :rank_1).each do |error|
+          %p.error-message-1
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_1, placeholder: "概要を入力", class: "form__content"
       .form__border
       %p#index-rank ２位 (30文字まで)
       = f.text_field :rank_2, placeholder: "2位を入力", class: "form__rank", data: {rank: "2"}
+      .form__error-2{data: {error: "input#rank_rank_2"}}
+        - show_errors(@rank, :rank_2).each do |error|
+          %p.error-message-2
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_2, placeholder: "概要を入力", class: "form__content"
       .form__border
       %p#index-rank ３位 (30文字まで)
       = f.text_field :rank_3, placeholder: "3位を入力", class: "form__rank", data: {rank: "3"}
+      .form__error-3{data: {error: "input#rank_rank_3"}}
+        - show_errors(@rank, :rank_3).each do |error|
+          %p.error-message-3
+            = error
       %p#index-detail 概要 (240文字まで)
       = f.text_area :content_3, placeholder: "概要を入力", class: "form__content"
       .form__border
 
-      .form__edit
-        .form__edit__wrapper{data:{index: "1"}}
+      .form__image
+        .form__image__wrapper{data:{index: "1"}}
           %p#index-image-1 
             = "画像（#{@rank.rank_1}）"
-          - if @rank.image_1.present? 
-            .form__edit__wrapper__preview-1
-              = image_tag asset_path("#{@rank.image_1}"), class: "edit-image-1"
-              = f.label :image_1, for: "change-image-1", class: "change-btn" do
-                = f.file_field :image_1, id: "change-image-1"
-                変更
-          - else
-            = f.label :image_1, for: "rank-image-1", class: "form__edit__wrapper__zone-1" do
-              = f.file_field :image_1, id: "rank-image-1"
+          = f.label :image_1, for: "rank-image-1", class: "form__image__wrapper__zone-1" do
+            = f.file_field :image_1, id: "rank-image-1"
+            - if @rank.image_1.present?
+              %p.hidden-1#hide 1位に関する画像を投稿
+              %i.fa.fa-camera-retro.hidden-1#hide
+              = image_tag asset_path("#{@rank.image_1}"), class: "preview-1"
+            -else
               %p.hidden-1 1位に関する画像を投稿
               %i.fa.fa-camera-retro.hidden-1
-            .form__edit__wrapper__btn-1
+          .form__image__wrapper__btn#only-edit
+            - if @rank.image_1.present?
+              #delete-1 編集
+            - else
               #delete-1 削除
+          - if @rank.image_1.present? 
+            .form__image__wrapper__btn
+              = link_to delete_image_1_rank_path , method: :post, id: "delete-btn" do
+                削除（空にする）
 
-        .form__edit__wrapper{data:{index: "2"}}
+        .form__image__wrapper{data:{index: "2"}}
           %p#index-image-2
             = "画像（#{@rank.rank_2}）"
-          - if @rank.image_2.present? 
-            .form__edit__wrapper__preview-2
-              = image_tag asset_path("#{@rank.image_2}"), class: "edit-image-2"
-              = f.label :image_2, for: "change-image-1", class: "change-btn" do
-                = f.file_field :image_2, id: "change-image-1"
-                変更
-          - else
-            = f.label :image_2, for: "rank-image-2", class: "form__edit__wrapper__zone-2" do
-              = f.file_field :image_2, id: "rank-image-2"
+          = f.label :image_2, for: "rank-image-2", class: "form__image__wrapper__zone-2" do
+            = f.file_field :image_2, id: "rank-image-2"
+            - if @rank.image_2.present?
+              %p.hidden-2#hide 2位に関する画像を投稿
+              %i.fa.fa-camera-retro.hidden-2#hide
+              = image_tag asset_path("#{@rank.image_2}"), class: "preview-2"
+            -else
               %p.hidden-2 2位に関する画像を投稿
               %i.fa.fa-camera-retro.hidden-2
-            .form__edit__wrapper__btn-2
+          .form__image__wrapper__btn#only-edit
+            - if @rank.image_2.present?
+              #delete-2 編集
+            - else
               #delete-2 削除
+          - if @rank.image_2.present? 
+            .form__image__wrapper__btn
+              = link_to delete_image_2_rank_path , method: :post, id: "delete-btn" do
+                削除（空にする）
 
-        .form__edit__wrapper{data:{index: "3"}}
-          %p#index-image-3
+        .form__image__wrapper{data:{index: "3"}}
+          %p#index-image-3 
             = "画像（#{@rank.rank_3}）"
-          - if @rank.image_3.present? 
-            .form__edit__wrapper__preview-3
-              = image_tag asset_path("#{@rank.image_3}"), class: "edit-image-3"
-              = f.label :image_3, for: "change-image-3", class: "change-btn" do
-                = f.file_field :image_3, id: "change-image-3"
-                変更
-          - else
-            = f.label :image_3, for: "rank-image-3", class: "form__edit__wrapper__zone-3" do
-              = f.file_field :image_3, id: "rank-image-3"
+          = f.label :image_3, for: "rank-image-3", class: "form__image__wrapper__zone-3" do
+            = f.file_field :image_3, id: "rank-image-3"
+            - if @rank.image_3.present?
+              %p.hidden-3#hide 3位に関する画像を投稿
+              %i.fa.fa-camera-retro.hidden-3#hide
+              = image_tag asset_path("#{@rank.image_3}"), class: "preview-3"
+            -else
               %p.hidden-3 3位に関する画像を投稿
               %i.fa.fa-camera-retro.hidden-3
-            .form__edit__wrapper__btn-3
+          .form__image__wrapper__btn#only-edit
+            - if @rank.image_3.present?
+              #delete-3 編集
+            - else
               #delete-3 削除
-      .form__border-image
+          - if @rank.image_3.present? 
+            .form__image__wrapper__btn
+              = link_to delete_image_3_rank_path , method: :post, id: "delete-btn" do
+                削除（空にする）
+      .form__border
 
-      %p#index-tag タグ（1つまで）
+      %p#index-tag タグ（3つまで）
       .form__tag
         .form__tag__wrapper
           = f.collection_check_boxes :tag_ids, Tag.all, :id, :name
-        - if @rank.tags.present?
+        - if @rank.tags.length > 2
           .reset-tag タグを選び直す
       .form__btn
-        = f.submit "ランキングを投稿", class: "create__btn"
+        = f.submit "ランキングを編集", class: "create__btn"
