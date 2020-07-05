@@ -150,5 +150,3 @@ URL： http://18.176.247.199/ranks/new
 # Author
 高橋駿介<br>
 2020年３月、10週間に及ぶプログラミングスクールでの学習を終了し、転職活動中
-
-email： t68.takahashi.shunsuke@gmail.com
